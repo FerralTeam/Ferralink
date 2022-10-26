@@ -1,1 +1,27 @@
-
+{
+  "name": "FerraLink",
+  "version": "0.0.1",
+  "description": "A nodejs lavalink client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+  },
+  "homepage": "https://github.com/Cd-corgi/FerralLink/",
+  "author": "VAIBHAV, CORGI",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Cd-corgi/FerralLink/issues"
+  },
+  "dependencies": {
+    "ws": "^8.10.0 "
+  },
+  "engines": {
+    "node": ">=16.9.0"
+  },
+  "keywords": [
+    "lavalink",
+    "discord",
+    "music",
+    "discord.js",
+  ],
+  
