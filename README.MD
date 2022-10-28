@@ -1,4 +1,4 @@
-<img src="https://media.discordapp.net/attachments/936271538196451379/1035586844617883708/feralink_tape.png?width=705&height=134">
+<p align="center"><img src="https://media.discordapp.net/attachments/936271538196451379/1035586844617883708/feralink_tape.png?width=705&height=134"><p>
 
 [![Vaivhab and Cørg1 - Discord](https://img.shields.io/badge/Server_Support-5865F2?style=for-the-badge&logo=discord&logoColor=FFFFFF)](https://discord.gg/7M6yGBTn79)
 [![Youtube - Vaibhab](https://img.shields.io/badge/Cørg1-F72424?style=for-the-badge&logo=youtube)](https://www.youtube.com/channel/UCnkviocxvPGS_80aNjJrCkQ)
