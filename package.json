@@ -1,13 +1,13 @@
 {
   "name": "ferralink",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A nodejs lavalink client",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "homepage": "https://github.com/Cd-corgi/FerralLink/",
-  "author": "VAIBHAV, corgi-cd",
+  "author": "Vikay, corgi-cd",
   "license": "MIT",
   "repository": "Cd-corgi/FerralLink",
   "bugs": {
