@@ -1,5 +1,5 @@
 {
-  "name": "FerralLink",
+  "name": "ferralink",
   "version": "0.0.1",
   "description": "A nodejs lavalink client",
   "main": "index.js",
