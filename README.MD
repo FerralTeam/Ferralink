@@ -8,7 +8,7 @@
 
 
 A Simple but powerful Lavalink Client for your JavaScript Discord Bot!
-<br>
+
 <br>
 <center>
 "A little project made by Vaibhav and with help of Corgi made this package to make more easy the way of make Music Bots"
@@ -16,19 +16,10 @@ A Simple but powerful Lavalink Client for your JavaScript Discord Bot!
 
 # 🔨 Requirements 
 
-<br>
-<br>
-
 * Node.js >= 16.9.0 or Latest
 * Discord.js >= 14.6.0
 
-<br>
-<br>
-
 # How to Install FerraLink
-
-<br>
-<br>
 
 > 1. Go to console and write this `npm i ferralink`
 > 
@@ -36,17 +27,9 @@ A Simple but powerful Lavalink Client for your JavaScript Discord Bot!
 >
 > 3. Do not forget Giving the `Intents` for `Voice Channels`
 
-<br>
-<br>
-
 # How to Setup our FerraLink
 
-<br>
-<br>
-
 ## 1. Declaring FerraLink
-
-<br>
 
 ```js
 const { FerralLink } = require("FerralLink");
@@ -54,8 +37,6 @@ const { FerralLink } = require("FerralLink");
 
 
 ## 2. Defining your Nodes
-
-<br>
 
 > 1. *This setp depends if you have any Hosting to get your Lavalink Server.*
 > 
@@ -74,8 +55,6 @@ const nodes = [{
 
 ## 3. Set the Initilizer of FerraLink
 
-<br>
-
 *Creating in a way like the code example you can import the bot and nodes.*
 
 ```js
@@ -83,8 +62,6 @@ client.FerralLink = new FerralLink(client, nodes);
 ```
 
 ## 4. Launch FerraLink
-
-<br>
 
 > *Inside of the **Ready** event we have to call the FerralLink Variable to initialize the client.*
 
@@ -97,8 +74,6 @@ client.on("ready", () => {
 
 ## 5. Define the Manager
 
-<br>
-
 > *After of initializing the Node, you have to put the `client.FerralLink` in a variable to make the events.*
 
 ```js
@@ -106,8 +81,6 @@ const manager = client.FerralLink;
 ```
 
 ## 6. Getting the Events
-
-<br>
 
 > *There's some events to use to your next Music Bot.*
 
