@@ -1,6 +1,6 @@
 {
   "name": "ferralink",
-  "version": "0.0.3",
+  "version": "0.0.1",
   "description": "A nodejs lavalink client",
   "main": "index.js",
   "scripts": {
