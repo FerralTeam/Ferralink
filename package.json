@@ -6,12 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/Cd-corgi/FerralLink/",
+  "homepage": "https://github.com/Cd-corgi/Ferralink/",
   "author": "vkamsingh, corgi-cd",
   "license": "MIT",
   "repository": "Cd-corgi/FerralLink",
   "bugs": {
-    "url": "https://github.com/Cd-corgi/FerralLink/issues"
+    "url": "https://github.com/Cd-corgi/Ferralink/issues"
   },
   "dependencies": {
     "undici": "^5.12.0",
