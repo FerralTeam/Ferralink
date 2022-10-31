@@ -25,5 +25,8 @@
     "discord",
     "music",
     "discord.js"
-  ]
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
 } 
