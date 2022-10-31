@@ -1,18 +1,18 @@
 {
-  "name": "ferralink",
-  "version": "1.0.0",
-  "description": "A nodejs lavalink client",
+  "name": "Ferralink",
+  "version": "0.0.1",
+  "description": "A node.js lavalink client",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/Cd-corgi/Ferralink/",
+  "repository": "Cd-corgi/Ferralink",
   "author": "vkamsingh, corgi-cd",
   "license": "MIT",
-  "repository": "Cd-corgi/FerralLink",
   "bugs": {
     "url": "https://github.com/Cd-corgi/Ferralink/issues"
   },
+  "homepage": "https://github.com/Cd-corgi/Ferralink/",
   "dependencies": {
     "undici": "^5.12.0",
     "ws": "^8.10.0"
