@@ -1,6 +1,6 @@
 {
-  "name": "Ferralink",
-  "version": "0.0.1",
+  "name": "ferra-link",
+  "version": "0.1.3",
   "description": "A node.js lavalink client",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/Cd-corgi/Ferralink/issues"
   },
-  "homepage": "https://github.com/Cd-corgi/Ferralink/",
+  "homepage": "https://github.com/Cd-corgi/Ferralink#readme",
   "dependencies": {
     "undici": "^5.12.0",
     "ws": "^8.10.0"

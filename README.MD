@@ -32,7 +32,7 @@ A Simple but powerful Lavalink Client for your JavaScript Discord Bot!
 ## 1. Declaring FerraLink
 
 ```js
-const { Ferralink } = require("ferralink");
+const { Ferralink } = require("ferra-link");
 ```
 
 
