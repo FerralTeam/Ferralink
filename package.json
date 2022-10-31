@@ -1,6 +1,6 @@
 {
   "name": "ferralink",
-  "version": "0.0.1",
+  "version": "^1.0.0",
   "description": "A nodejs lavalink client",
   "main": "index.js",
   "scripts": {
@@ -25,8 +25,5 @@
     "discord",
     "music",
     "discord.js"
-  ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  }
+  ]
 } 
