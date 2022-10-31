@@ -21,7 +21,7 @@ A Simple but powerful Lavalink Client for your JavaScript Discord Bot!
 
 # How to Install FerraLink
 
-> 1. Go to console and write this `npm i ferralink`
+> 1. Go to console and write this `npm i ferra-link`
 > 
 > 2. Having a Host with Lavalink Client (Recommended) or using it in Localhost 
 >
