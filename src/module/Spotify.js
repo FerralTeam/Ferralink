@@ -216,8 +216,6 @@ class Spotify {
 
   async search(query) {
     try {
-      if (this.check(query)) return this.resolve(query);
-
       const data = await this.requestData(
         `/search/?q="${query}"&type=artist,album,track&market=${
           this.options.searchMarket ?? "US"
