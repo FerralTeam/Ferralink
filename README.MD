@@ -90,6 +90,5 @@ client.FerraLink = new Ferralink(client, nodes);
 </center>
 
 ## Contributors
-> - Deivu as the owner of Shoukaku.   
->   &nbsp;&nbsp;&nbsp;&nbsp; Github: https://github.com/Deivu    
->   &nbsp;
+> Deivu as the owner of Shoukaku.
+> Github: https://github.com/Deivu
