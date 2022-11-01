@@ -47,8 +47,6 @@ class FerraLink extends EventEmitter {
         }
     }
     async search(query, options) {
-        const node = this.getLeastUsedNode();
-        if (!node) throw new Error("[FerraLink] => No nodes are existing.");
         let result;
         if (this.isCheckURL(query)) {
             result = await this.shoukaku.node.rest.resolve(query);
