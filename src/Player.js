@@ -95,7 +95,7 @@ class Player {
     }
     setLoop(mode) {
         if (!mode) throw new Error("[FerraLink] => You must have to provide loop mode as argument of setLoop");
-        if (!["none", "track", "queue"].includes(mode)) throw new Error("[FerraLink] =>  setLoop arguments are none,track and queue");
+        if (!["none", "track", "queue"].includes(mode)) throw new Error("[FerraLink] =>  setLoop arguments are none, track and queue");
         switch (mode) {
             case "none": {
                 this.loop = "none";
