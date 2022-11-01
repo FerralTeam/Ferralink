@@ -45,7 +45,6 @@ secure: false
 }];
 ```
 
-
 ## 3. Set the Initilizer of Ferralink
 
 *Creating in a way like the code example you can import the bot and nodes.*
@@ -54,7 +53,35 @@ secure: false
 client.FerraLink = new Ferralink(client, nodes);
 ```
 
-## 4. Getting the Events (shoukaku)
+## 4. A small example for create play command.
+```js
+const player = await client.FerraLink.createPlayer({
+guildId: message.guild.id,
+voiceId: message.member.voice.channel.id,
+textId: message.channel.id,
+shardId: message.guild.shardId,
+deaf: true,
+});
+
+const resolve = await client.FerraLink.search(queue, { engine: "scsearch" });
+const { loadType, tracks, playlistInfo } = resolve;
+
+if (loadType === "NO_MATCHES" || !tracks.length) return;
+
+if (loadType === "PLAYLIST_LOADED") {
+for (const track of tracks) {
+player.queue.add(track);
+}
+if (!player.queue.current && !player.paused) await player.play();
+message.channel.send({content: `Added ${player.queue.length} tracks from ${playlistInfo.name}`});
+} else if (loadType === "SEARCH_RESULT" || loadType === "TRACK_LOADED") {
+player.queue.add(tracks[0]);
+if (!player.queue.current && !player.paused) await player.play();
+message.channel.send({content: `Queued ${tracks[0].info.title}`});
+}
+```
+
+## 5. Getting the Events (shoukaku)
 
 > *You can access event with the help of `client.FerraLink.shoukaku.on()....`.*
 
@@ -69,7 +96,7 @@ client.FerraLink = new Ferralink(client, nodes);
 |   debug         | name, reason	      | Event of the node debug.      |
 </center>
 
-## 5. Getting the Events (FerraLink)
+## 6. Getting the Events (FerraLink)
 
 > *You can access event with the help of `client.FerraLink.on()....`.*
 
