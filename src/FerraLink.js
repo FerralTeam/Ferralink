@@ -57,7 +57,7 @@ class FerraLink extends EventEmitter {
         }
     }
     /**
-    * To search a tracks.
+    * To search tracks.
     */
     async search(query, options) {
         const node = this.getNode();
