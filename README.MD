@@ -26,7 +26,7 @@ A Simple but powerful Lavalink Client for your JavaScript Discord Bot!
 ## 1. Declaring FerraLink
 
 ```js
-const { Ferralink } = require("ferra-link");
+const { FerraLink } = require("ferra-link");
 ```
 
 
@@ -50,7 +50,16 @@ secure: false
 *Creating in a way like the code example you can import the bot and nodes.*
 
 ```js
-client.FerraLink = new Ferralink(client, nodes);
+client.FerraLink = new FerraLink(client, nodes, {
+spotify: {
+ playlistLimit: "Playlist search limit", //default limit is 5 = 500.
+ albumLimit: "Album search limit", //default limit is 5 = 500.
+ artistLimit: "Artist search limit", //default limit is 5 = 500.
+ searchMarket: "ISO for search track", //default searchMarket is US.
+ clientID: "Your spotify clientId here",
+ clientSecret: "Your spotify clientSecret here"
+}
+});
 ```
 
 ## 4. A small example to create play command.
@@ -63,7 +72,7 @@ shardId: message.guild.shardId,
 deaf: true,
 });
 
-const resolve = await client.FerraLink.search(queue, { engine: "scsearch" });
+const resolve = await client.FerraLink.search(queue, { engine: "spsearch" }); // spsearch is work for search spotify tracks.
 const { loadType, tracks, playlistInfo } = resolve;
 
 if (loadType === "NO_MATCHES" || !tracks.length) return;
