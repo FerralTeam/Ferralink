@@ -26,12 +26,11 @@ class Player {
                 this.queue.current = null;
                 return this.play();
             }
-            if (this.loop === "track" && this.queue.current) this.queue.unshift(this.queue.current);
-            if (this.loop === "queue" && this.queue.current) this.queue.push(this.queue.current);
-
-            this.queue.previous = this.queue.current;
             const current = this.queue.current;
+            this.queue.previous = this.queue.current;
             this.queue.current = null;
+            if (this.loop === "track") this.queue.unshift(this.queue.previous);
+            if (this.loop === "queue") this.queue.push(this.queue.previous);
 
             if (this.queue.length) this.manager.emit("trackEnd", this, current);
             else {
