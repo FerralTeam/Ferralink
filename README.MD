@@ -91,5 +91,4 @@ client.FerraLink = new Ferralink(client, nodes);
 
 ## Contributors
 > Deivu as the owner of Shoukaku.
-
 > Github: https://github.com/Deivu
