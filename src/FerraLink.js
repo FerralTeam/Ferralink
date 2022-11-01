@@ -18,11 +18,15 @@ class FerraLink extends EventEmitter {
         this.shoukaku = new Shoukaku(new Connectors.DiscordJS(client), nodes, options);
         this.players = new Map();
     }
+    getNode() {
+    const node = this.shoukaku.getNode();
+    if (!node) throw new Error("[FerraLink] => No nodes are existing.");
+    return node;
+    }
     async createPlayer(options) {
         const existing = this.players.get(options.guildId);
         if (!existing) {
-            const node = this.shoukaku.getNode();
-            if (!node) throw new Error("[FerraLink] => No nodes are existing.");
+            const node = this.getNode();
             const ShoukakuPlayer = await node.joinChannel({
                 guildId: options.guildId,
                 channelId: options.voiceId,
@@ -47,12 +51,13 @@ class FerraLink extends EventEmitter {
         }
     }
     async search(query, options) {
+        const node = this.getNode();
         let result;
         if (this.isCheckURL(query)) {
-            result = await this.shoukaku.node.rest.resolve(query);
+            result = await node.rest.resolve(query);
         } else {
             const source = options?.engine || "ytsearch";
-            result = await this.shoukaku.node.rest.resolve(`${source}:${query}`);
+            result = await node.rest.resolve(`${source}:${query}`);
         }
         return result;
     }
