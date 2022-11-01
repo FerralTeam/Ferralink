@@ -53,7 +53,7 @@ secure: false
 client.FerraLink = new Ferralink(client, nodes);
 ```
 
-## 4. A small example for create play command.
+## 4. A small example to create play command.
 ```js
 const player = await client.FerraLink.createPlayer({
 guildId: message.guild.id,
@@ -78,7 +78,7 @@ message.channel.send({content: `Added ${player.queue.length} tracks from ${playl
 player.queue.add(tracks[0]);
 if (!player.queue.current && !player.paused) await player.play();
 message.channel.send({content: `Queued ${tracks[0].info.title}`});
-}
+} else return;
 ```
 
 ## 5. Getting the Events (shoukaku)
