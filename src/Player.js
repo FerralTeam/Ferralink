@@ -80,16 +80,21 @@ class Player {
         this.paused = pause;
         this.playing = !pause;
         this.shoukaku.setPaused(pause);
+        return this;
     }
     skip() {
         this.shoukaku.stopTrack();
+        return this;
     }
     setVolume(volume) {
         if (Number.isNaN(volume)) throw new RangeError("[FerraLink] => Volume level must be a number.");
         this.shoukaku.setVolume(volume / 100);
+        this.volume = volume;
+        return this;
     }
     setVoiceChannel(voiceId) {
         this.voiceId = voiceId;
+        return this;
     }
     setLoop(mode) {
         if (!mode) throw new Error("[FerraLink] => You must have to provide loop mode as argument of setLoop");
@@ -119,8 +124,8 @@ class Player {
     destroy() {
         this.disconnect();
         this.shoukaku.connection.disconnect();
-        this.manager.players.delete(this.guildId);
         this.manager.emit("playerDestroy", this);
+        this.manager.players.delete(this.guildId);
     }
 }
 module.exports = Player;
