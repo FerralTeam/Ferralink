@@ -52,10 +52,10 @@ secure: false
 ```js
 client.FerraLink = new FerraLink(client, nodes, {
 spotify: {
- playlistLimit: "Playlist search limit", //default limit is 5 = 500.
- albumLimit: "Album search limit", //default limit is 5 = 500.
- artistLimit: "Artist search limit", //default limit is 5 = 500.
- searchMarket: "ISO for search track", //default searchMarket is US.
+ playlistLimit: "Playlist search limit here", //default limit is 5 = 500.
+ albumLimit: "Album search limit here", //default limit is 5 = 500.
+ artistLimit: "Artist search limit here", //default limit is 5 = 500.
+ searchMarket: "searchMarket(ISO) here", //default searchMarket is US.
  clientID: "Your spotify clientId here",
  clientSecret: "Your spotify clientSecret here"
 }
