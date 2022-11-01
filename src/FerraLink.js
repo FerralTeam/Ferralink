@@ -27,7 +27,7 @@ class FerraLink extends EventEmitter {
         return node;
     }
     /**
-    * To get a createPlayer.
+    * To create a player.
     */
     async createPlayer(options) {
         const existing = this.players.get(options.guildId);
@@ -57,7 +57,7 @@ class FerraLink extends EventEmitter {
         }
     }
     /**
-    * To search tracks.
+    * To search a tracks.
     */
     async search(query, options) {
         const node = this.getNode();
