@@ -1,7 +1,7 @@
 {
   "name": "ferra-link",
   "version": "0.1.4",
-  "description": "A node.js lavalink client",
+  "description": "A power lavalink wrapper for nodeJS made with shoukaku.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,8 +14,7 @@
   },
   "homepage": "https://github.com/Cd-corgi/Ferralink#readme",
   "dependencies": {
-    "undici": "^5.12.0",
-    "ws": "^8.10.0"
+    "shoukaku": "^3.2.2"
   },
   "engines": {
     "node": ">=16.9.0"
