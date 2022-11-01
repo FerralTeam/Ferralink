@@ -66,9 +66,9 @@ class Player {
     }
     async resolve(track) {
         const query = [track.info.author, track.info.title].filter((x) => !!x).join(" - ");
-        let result = await this.shoukaku.node.rest.resolve(`ytsearch:${query}`);
+        let result = await this.shoukaku.node.rest.resolve(`ytmsearch:${query}`);
         if (!result || !result.tracks.length) {
-            result = await this.shoukaku.node.rest.resolve(`ytmsearch:${query}`);
+            result = await this.shoukaku.node.rest.resolve(`ytsearch:${query}`);
             if (!result || !result.tracks.length) return;
         }
         track.track = result.tracks[0].track;
