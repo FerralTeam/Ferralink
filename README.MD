@@ -89,7 +89,7 @@ client.FerraLink = new Ferralink(client, nodes);
 |   PlayerCreate    | player	        | Event of the player create.   |
 </center>
 
-# Contributors
-> Deivu as the owner of Shoukaku.
-> &nbsp;&nbsp;&nbsp;&nbsp; Github: https://github.com/Deivu    
-> &nbsp;
+## Contributors
+> - Deivu as the owner of Shoukaku.   
+>   &nbsp;&nbsp;&nbsp;&nbsp; Github: https://github.com/Deivu    
+>   &nbsp;
