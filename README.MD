@@ -69,6 +69,7 @@ guildId: message.guild.id,
 voiceId: message.member.voice.channel.id,
 textId: message.channel.id,
 shardId: message.guild.shardId,
+volume: 100,
 deaf: true,
 });
 
