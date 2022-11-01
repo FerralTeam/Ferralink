@@ -6,6 +6,7 @@ class Player {
         this.guildId = options.guildId;
         this.voiceId = options.voiceId;
         this.textId = options.textId;
+        this.volume = options.volume;
         this.shoukaku = options.ShoukakuPlayer;
         this.queue = new Queue();
         this.paused = false;
@@ -60,11 +61,8 @@ class Player {
         if (!newTrack.track) newTrack = await this.resolve(newTrack);
         this.queue.current = newTrack;
 
-        const playOptions = { track: this.queue.current.track, options: {} };
-        if (options) playOptions.options = { ...options, noReplace: false };
-        else playOptions.options = { noReplace: false };
-
-        this.shoukaku.playTrack(playOptions);
+        const playOptions = { noReplace: false };
+        this.shoukaku.playTrack({track: this.queue.current.track}, playOptions).setVolume(this.volume / 100);
     }
     async resolve(track) {
         const query = [track.info.author, track.info.title].filter((x) => !!x).join(" - ");

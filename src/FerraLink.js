@@ -8,14 +8,17 @@ const ShoukakuOptions = {
     restTimeout: 60000
 };
 const Player = require("./Player");
+const Spotify = require("./module/Spotify")
 
 class FerraLink extends EventEmitter {
-    constructor(client, nodes) {
+    constructor(client, nodes, options) {
         super();
         if (!client) throw new Error("[FerraLink] => You need to provide client.");
         if (!nodes) throw new Error("[FerraLink] => You need to provide nodes.");
+        if (!options?.spotify) throw new Error("[FerraLink] => You need to provide spotify options.");
         this.shoukaku = new Shoukaku(new Connectors.DiscordJS(client), nodes, ShoukakuOptions);
         this.players = new Map();
+        this.spotify = new Spotify(options?.spotify);
     }
     getNode() {
         const node = this.shoukaku.getNode();
@@ -39,6 +42,7 @@ class FerraLink extends EventEmitter {
                     guildId: options.guildId,
                     voiceId: options.voiceId,
                     textId: options.textId,
+                    volume: options.volume || "80",
                     ShoukakuPlayer
                 });
             this.players.set(options.guildId, FerraLinkPlayer);
@@ -51,11 +55,17 @@ class FerraLink extends EventEmitter {
     async search(query, options) {
         const node = this.getNode();
         let result;
-        if (this.isCheckURL(query)) {
+        if (this.spotify.check(query)) {
+            result = await this.spotify.resolve(query);
+        } else if (this.isCheckURL(query)) {
             result = await node.rest.resolve(query);
         } else {
             const source = options?.engine || "ytsearch";
-            result = await node.rest.resolve(`${source}:${query}`);
+            if (source === "spsearch") {
+                result = await this.spotify.search(query);
+            } else {
+                result = await node.rest.resolve(`${source}:${query}`);
+            }
         }
         return result;
     }
