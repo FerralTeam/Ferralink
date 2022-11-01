@@ -216,14 +216,17 @@ class Spotify {
 
   async search(query) {
     try {
-      const limit = 10;
-      const tracks = await this.requestData(
-        `/search?q=${query}&type=artist,track&limit=${limit}&market=${this.options.searchMarket ?? 'US'}`,
+      if (this.check(query)) return this.resolve(query);
+
+      const data = await this.requestData(
+        `/search/?q="${query}"&type=artist,album,track&market=${
+          this.options.searchMarket ?? "US"
+        }`
       );
-
-      const unresolvedTracks = await Promise.all(tracks.tracks.items.map((track) => this.buildUnresolved(track)));
-
-      return this.buildResponse("SEARCH_RESULT", unresolvedTracks);
+      const unresolvedTracks = await Promise.all(
+        data.tracks.items.map((x) => this.buildUnresolved(x))
+      );
+      return this.buildResponse("TRACK_LOADED", unresolvedTracks);
     } catch (e) {
       return this.buildResponse(
         e.body?.error.message === "invalid id" ? "NO_MATCHES" : "LOAD_FAILED",
