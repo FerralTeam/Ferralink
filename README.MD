@@ -6,20 +6,14 @@
 
 # 🎶 FerraLink
 
-
 A Simple but powerful Lavalink Client for your JavaScript Discord Bot!
-
-<br>
-<center>
-"A little project made by Vaibhav and with help of Corgi made this package to make more easy the way of make Music Bots"
-</center>
 
 # 🔨 Requirements 
 
 * Node.js >= 16.9.0 or Latest
 * Discord.js >= 14.6.0
 
-# How to Install FerraLink
+# 📦 How to Install FerraLink
 
 > 1. Go to console and write this `npm i ferra-link`
 > 
@@ -44,11 +38,10 @@ const { Ferralink } = require("ferra-link");
 
 ```js
 const nodes = [{
-  host: 'localhost',
-  password: 'youshallpass',
-  port: 1234,
-  secure: false,
-  name: 'lavalink'
+name: "Node",
+url: "localhost:2333",
+auth: "youshallpass",
+secure: false
 }];
 ```
 
@@ -58,36 +51,45 @@ const nodes = [{
 *Creating in a way like the code example you can import the bot and nodes.*
 
 ```js
-client.FerralLink = new Ferralink(client, nodes);
+client.FerraLink = new Ferralink(client, nodes);
 ```
 
-## 4. Launch FerraLink
+## 4. Getting the Events (shoukaku)
 
-> *Inside of the **Ready** event we have to call the FerralLink Variable to initialize the client.*
-
-```js
-client.on("ready", () => {
-    client.FerralLink.init(client);
-});
-```
-
-
-## 5. Define the Manager
-
-> *After of initializing the Node, you have to put the `client.FerralLink` in a variable to make the events.*
-
-```js
-const manager = client.FerralLink;
-```
-
-## 6. Getting the Events
-
-> *There's some events to use to your next Music Bot.*
+> *You can access event with the help of `client.FerraLink.shoukaku.on()....`.*
 
 <center>
 
-| **Event Name** 	|   **Elements**  	|           **Description**           	|
-|:--------------:	|:---------------:	|:-----------------------------------:	|
-|   nodeConnect  	|      _node_     	|    Event of the node connection.    	|
-|   trackStart   	| _player, track_ 	| Event of the current starting song. 	|
+| **Event Name** 	|   **Elements**  	  |       **Description**         |
+|:--------------:	|:------------------: |:----------------------------: |
+|   ready 	      | name, resumed       | Event of the node connection. |
+|   error         | name, error 	      | Event of the node error.      |
+|   close         | name, code, reason  | Event of the node close.	    |
+|   disconnect    | name, players, move | Event of the node disconnect.	|
+|   debug         | name, reason	      | Event of the node debug.      |
 </center>
+
+## 5. Getting the Events (FerraLink)
+
+> *You can access event with the help of `client.FerraLink.on()....`.*
+
+<center>
+
+| **Event Name** 	  |   **Elements**  |       **Description**         |
+|:----------------: |:--------------: |:----------------------------: |
+|   trackStart	    | player, track   | Event of the track start.     |
+|   trackEnd        | player, track	  | Event of the track end.       |
+|   queueEnd        | player          | Event of the queue end.	      |
+|   PlayerClosed    | player, data    | Event of the player close.	  |
+|   trackException  | player, data	  | Event of the track exception. |
+|   PlayerUpdate    | player, data	  | Event of the player update.   |
+|   trackStuck      | player, data	  | Event of the track stuck.     |
+|   PlayerResumed   | player          | Event of the player resumed.  |
+|   playerDestroy   | player	        | Event of the player destroyed.|
+|   PlayerCreate    | player	        | Event of the player create.   |
+</center>
+
+# Contributors
+> Deivu as the owner of Shoukaku.
+> &nbsp;&nbsp;&nbsp;&nbsp; Github: https://github.com/Deivu    
+> &nbsp;
