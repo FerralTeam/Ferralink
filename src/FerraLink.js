@@ -1,6 +1,6 @@
 const { EventEmitter } = require("events");
 const { Shoukaku, Connectors } = require("shoukaku");
-const options = {
+const ShoukakuOptions = {
     moveOnDisconnect: false,
     resumable: false,
     resumableTimeout: 30,
@@ -14,21 +14,14 @@ class FerraLink extends EventEmitter {
         super();
         if (!client) throw new Error("[FerraLink] => You need to provide client.");
         if (!nodes) throw new Error("[FerraLink] => You need to provide nodes.");
-        this.client = client;
-        this.shoukaku = new Shoukaku(new Connectors.DiscordJS(client), nodes, options);
+        this.shoukaku = new Shoukaku(new Connectors.DiscordJS(client), nodes, ShoukakuOptions);
         this.players = new Map();
     }
-    /**
-    * To get a node for join voicechannel or search track.
-    */
     getNode() {
         const node = this.shoukaku.getNode();
         if (!node) throw new Error("[FerraLink] => No nodes are existing.");
         return node;
     }
-    /**
-    * To create a player.
-    */
     async createPlayer(options) {
         const existing = this.players.get(options.guildId);
         if (!existing) {
@@ -43,7 +36,6 @@ class FerraLink extends EventEmitter {
             const FerraLinkPlayer = new Player(
                 this,
                 {
-                    client: this.client,
                     guildId: options.guildId,
                     voiceId: options.voiceId,
                     textId: options.textId,
@@ -56,9 +48,6 @@ class FerraLink extends EventEmitter {
             return existing;
         }
     }
-    /**
-    * To search tracks.
-    */
     async search(query, options) {
         const node = this.getNode();
         let result;
