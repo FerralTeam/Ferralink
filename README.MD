@@ -95,7 +95,7 @@ message.channel.send({content: `Queued ${tracks[0].info.title}`});
 } else return;
 ```
 
-## 5. Getting the Events (shoukaku)
+# Getting the Events (shoukaku)
 
 > *You can access event with the help of `client.FerraLink.shoukaku.on()....`.*
 
@@ -110,7 +110,7 @@ message.channel.send({content: `Queued ${tracks[0].info.title}`});
 |   debug         | name, reason	      | Event of the node debug.      |
 </center>
 
-## 6. Getting the Events (FerraLink)
+# Getting the Events (FerraLink)
 
 > *You can access event with the help of `client.FerraLink.on()....`.*
 
