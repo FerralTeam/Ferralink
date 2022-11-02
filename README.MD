@@ -139,4 +139,4 @@ message.channel.send({content: `Queued ${tracks[0].info.title}`});
 >
 > Vkamsingh, Corgi as the owner of [FerraLink](https://github.com/Cd-corgi/Ferralink).
 >
-> Prahar as the maintainer of [FerraLink Docs](https://github.com/Cd-corgi/Ferralink).
+> Prahar as the maintainer of [FerraLink Docs](https://ferralink.gitbook.io/untitled).
