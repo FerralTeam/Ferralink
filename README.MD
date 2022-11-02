@@ -140,8 +140,8 @@ message.channel.send({content: `Queued ${tracks[0].info.title}`});
 ## Contributors
 > Deivu as the owner of [Shoukaku](https://github.com/Deivu/Shoukaku).
 >
-> Inspired by [kazagumo](https://www.npmjs.com/package/kazagumo), [Poru](https://www.npmjs.com/package/poru) and [erela.js](https://www.npmjs.com/package/erela.js).
->
 > Vkamsingh, Corgi as the owner of [FerraLink](https://github.com/Cd-corgi/Ferralink).
 >
 > Prahar as the maintainer of [FerraLink Docs](https://ferralink.gitbook.io/untitled).
+>
+> Inspired by [kazagumo](https://www.npmjs.com/package/kazagumo), [Poru](https://www.npmjs.com/package/poru) and [erela.js](https://www.npmjs.com/package/erela.js).
