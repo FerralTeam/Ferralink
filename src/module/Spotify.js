@@ -1,7 +1,5 @@
 const { fetch } = require("undici");
-
-let spotifyPattern =
-  /^(?:https:\/\/open\.spotify\.com\/(?:user\/[A-Za-z0-9]+\/)?|spotify:)(album|playlist|track|artist)(?:[/:])([A-Za-z0-9]+).*$/;
+let Pattern = /^(?:https:\/\/open\.spotify\.com\/(?:user\/[A-Za-z0-9]+\/)?|spotify:)(album|playlist|track|artist)(?:[/:])([A-Za-z0-9]+).*$/;
 
 class Spotify {
   constructor(manager) {
@@ -22,7 +20,7 @@ class Spotify {
   }
 
   check(url) {
-    return spotifyPattern.test(url);
+    return Pattern.test(url);
   }
 
   async requestAnonymousToken() {
@@ -95,7 +93,7 @@ class Spotify {
 
   async resolve(url) {
     if (!this.token) await this.requestToken();
-    const [, type, id] = spotifyPattern.exec(url) ?? [];
+    const [, type, id] = Pattern.exec(url) ?? [];
 
     switch (type) {
       case "playlist": {
