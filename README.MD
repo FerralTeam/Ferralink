@@ -14,8 +14,8 @@ A Simple but powerful Lavalink Client for your JavaScript Discord Bot!
 
 # 🔨 Requirements 
 
-* Node.js >= 16.9.0 or Latest
-* Discord.js >= 14.6.0
+* Node.js >= 16.9.0 or Latest.
+* Discord.js >= 14.6.0.
 
 # 📖 Documentation
 - [Documentation](https://ferralink.gitbook.io/untitled/).
