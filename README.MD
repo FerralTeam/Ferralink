@@ -1,9 +1,9 @@
 <p align="center"><img src="https://media.discordapp.net/attachments/936271538196451379/1035586844617883708/feralink_tape.png?width=705&height=134"><p>
 
 <p align="center">
-<a href="https://discord.gg/7M6yGBTn79"><img src="https://img.shields.io/discord/1035595149385945088?color=5865F2&logo=discord&logoColor=white" alt="Discord server" /></a>
+[![Discord](https://img.shields.io/discord/1035595149385945088?style=flat-square)](https://discord.gg/7M6yGBTn79)
 [![npm version](https://img.shields.io/npm/v/ferra-link?style=flat-square)](https://www.npmjs.com/package/ferra-link)
-<a href="https://www.npmjs.com/package/ferra-link"><img src="https://img.shields.io/npm/dt/ferra-link.svg?maxAge=3600" alt="npm downloads" /></a>
+[![npm download](https://img.shields.io/npm/dt/ferra-link.svg?maxAge=3600)]([https://www.npmjs.com/package/ferra-link](https://www.npmjs.com/package/ferra-link))
 ![GitHub issues](https://img.shields.io/github/issues-raw/Cd-corgi/Ferralink?style=flat-square)
 </p>
   
