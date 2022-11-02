@@ -140,7 +140,7 @@ message.channel.send({content: `Queued ${tracks[0].info.title}`});
 ## Contributors
 > Deivu as the owner of [Shoukaku](https://github.com/Deivu/Shoukaku).
 >
-> Parasop as the Owner of [Poru](https://github.com/parasop)
+> Inspired by [Poru](https://github.com/parasop) from Parasop
 >
 > Vkamsingh, Corgi as the owner of [FerraLink](https://github.com/Cd-corgi/Ferralink).
 >
