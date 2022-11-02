@@ -108,26 +108,16 @@ class Player {
         return this;
     }
     setLoop(method) {
-        if (!method) throw new Error("[FerraLink] => You must have to provide loop mode as argument of setLoop");
-        if (!["none", "track", "queue"].includes(method)) throw new Error("[FerraLink] =>  setLoop arguments are none, track and queue");
-        switch (method) {
-            case "none": {
-                this.loop = "none";
-                break;
-            }
-            case "track": {
-                this.loop = "track";
-                break;
-            }
-            case "queue": {
-                this.loop = "queue";
-                break;
-            }
+        if (!method) throw new Error("[FerraLink] => You must have to provide loop method as argument for setLoop.");
+        if (method === "none" || method === "track" || method === "queue") {
+            this.loop = method;
+            return this;
         }
+        this.loop = "none";
         return this;
     }
     disconnect() {
-        this.pause(true);
+        this.pause(true)
         this.voiceId = null;
         this.queue.current = null;
         this.queue.clear();
