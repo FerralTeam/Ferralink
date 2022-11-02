@@ -8,6 +8,10 @@
 # 🎶 FerraLink
 
 A Simple but powerful Lavalink Client for your JavaScript Discord Bot!
+ 
+<p align="center">
+  <a href="https://nodei.co/npm/ferra-link/"><img src="https://nodei.co/npm/ferra-link.png?downloads=true&downloadRank=true&stars=true"></a>
+</p>
 
 # 🔨 Requirements 
 
