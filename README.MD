@@ -2,16 +2,17 @@
 
 [![Vaivhab and Cørg1 - Discord](https://img.shields.io/badge/Server_Support-5865F2?style=for-the-badge&logo=discord&logoColor=FFFFFF)](https://discord.gg/7M6yGBTn79)
 [![npm](https://img.shields.io/npm/v/ferra-link?style=flat-square)](https://www.npmjs.com/package/ferra-link)
+[![Github stars](https://img.shields.io/github/stars/Cd-corgi/Ferralink?color=333&logo=github&style=for-the-badge)](https://github.com/Cd-corgi/Ferralink/)
 [![Youtube - Vaibhab](https://img.shields.io/badge/Cørg1-F72424?style=for-the-badge&logo=youtube)](https://www.youtube.com/channel/UCnkviocxvPGS_80aNjJrCkQ)
 <br>
+
+<p align="center">
+  <a href="https://nodei.co/npm/ferra-link/"><img src="https://nodei.co/npm/ferra-link.png?downloads=true&downloadRank=true&stars=true"></a>
+</p>
 
 # 🎶 FerraLink
 
 A Simple but powerful Lavalink Client for your JavaScript Discord Bot!
- 
-<p align="center">
-  <a href="https://nodei.co/npm/ferra-link/"><img src="https://nodei.co/npm/ferra-link.png?downloads=true&downloadRank=true&stars=true"></a>
-</p>
 
 # 🔨 Requirements 
 
