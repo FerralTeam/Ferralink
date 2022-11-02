@@ -1,4 +1,6 @@
-<p align="center"><img src="https://media.discordapp.net/attachments/936271538196451379/1035586844617883708/feralink_tape.png?width=705&height=134"><p>
+<p align="center">
+  <img src="https://media.discordapp.net/attachments/936271538196451379/1035586844617883708/feralink_tape.png?width=705&height=134">
+</p>
 
 <p align="center">
 [![Discord](https://img.shields.io/discord/1035595149385945088?style=flat-square)](https://discord.gg/7M6yGBTn79)
