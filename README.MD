@@ -3,7 +3,7 @@
 <a href="https://discord.gg/7M6yGBTn79"><img src="https://img.shields.io/discord/1035595149385945088?color=5865F2&logo=discord&logoColor=white" alt="Discord server" /></a>
 [![npm version](https://img.shields.io/npm/v/ferra-link?style=flat-square)](https://www.npmjs.com/package/ferra-link)
 <a href="https://www.npmjs.com/package/ferra-link"><img src="https://img.shields.io/npm/dt/ferra-link.svg?maxAge=3600" alt="npm downloads" /></a>
-[![Youtube - Vaibhab](https://img.shields.io/badge/Cørg1-F72424?style=for-the-badge&logo=youtube)](https://www.youtube.com/channel/UCnkviocxvPGS_80aNjJrCkQ)
+![GitHub issues](https://img.shields.io/github/issues-raw/Cd-corgi/Ferralink?style=flat-square)
 <br>
   
 # 🎶 FerraLink
