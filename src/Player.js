@@ -86,20 +86,31 @@ class Player {
         this.shoukaku.stopTrack();
         return this;
     }
+    seekTo(position) {
+        if (Number.isNaN(position)) throw new RangeError("[FerraLink] => seek Position must be a number.");
+        this.shoukaku.seekTo(Number(position) * 1000);
+        return this;
+    }
     setVolume(volume) {
         if (Number.isNaN(volume)) throw new RangeError("[FerraLink] => Volume level must be a number.");
         this.shoukaku.setVolume(volume / 100);
         this.volume = volume;
         return this;
     }
+    setTextChannel(textId) {
+        if (typeof textId !== "string") throw new RangeError("[FerraLink] => textId must be a string.");
+        this.textId = textId;
+        return this;
+    }
     setVoiceChannel(voiceId) {
+        if (typeof voiceId !== "string") throw new RangeError("[FerraLink] => voiceId must be a string.");
         this.voiceId = voiceId;
         return this;
     }
-    setLoop(mode) {
-        if (!mode) throw new Error("[FerraLink] => You must have to provide loop mode as argument of setLoop");
-        if (!["none", "track", "queue"].includes(mode)) throw new Error("[FerraLink] =>  setLoop arguments are none, track and queue");
-        switch (mode) {
+    setLoop(method) {
+        if (!method) throw new Error("[FerraLink] => You must have to provide loop mode as argument of setLoop");
+        if (!["none", "track", "queue"].includes(method)) throw new Error("[FerraLink] =>  setLoop arguments are none, track and queue");
+        switch (method) {
             case "none": {
                 this.loop = "none";
                 break;
