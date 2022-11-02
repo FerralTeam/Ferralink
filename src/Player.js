@@ -117,7 +117,7 @@ class Player {
         return this;
     }
     disconnect() {
-        this.pause(true)
+        this.pause(true);
         this.voiceId = null;
         this.queue.current = null;
         this.queue.clear();
