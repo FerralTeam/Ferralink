@@ -109,7 +109,7 @@ class Player {
     }
     setLoop(method) {
         if (!method) throw new Error("[FerraLink] => You must have to provide loop method as argument for setLoop.");
-        if (method === "none" || method === "track" || method === "queue") {
+        if (method === "track" || method === "queue") {
             this.loop = method;
             return this;
         }
