@@ -8,17 +8,16 @@ const ShoukakuOptions = {
     restTimeout: 60000
 };
 const Player = require("./Player");
-const Spotify = require("./module/Spotify")
+const Spotify = require("./module/Spotify");
 
 class FerraLink extends EventEmitter {
     constructor(client, nodes, options) {
         super();
         if (!client) throw new Error("[FerraLink] => You need to provide client.");
         if (!nodes) throw new Error("[FerraLink] => You need to provide nodes.");
-        if (!options?.spotify) throw new Error("[FerraLink] => You need to provide spotify options.");
         this.shoukaku = new Shoukaku(new Connectors.DiscordJS(client), nodes, ShoukakuOptions);
         this.players = new Map();
-        this.spotify = new Spotify(options?.spotify);
+        this.spotify = new Spotify(options);
     }
     getNode() {
         const node = this.shoukaku.getNode();
