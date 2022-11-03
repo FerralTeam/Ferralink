@@ -1,16 +1,16 @@
 const { fetch } = require("undici");
-let pattern = /^(?:https:\/\/open\.spotify\.com\/(?:user\/[A-Za-z0-9]+\/)?|spotify:)(album|playlist|track|artist)(?:[/:])([A-Za-z0-9]+).*$/;
+let Pattern = /^(?:https:\/\/open\.spotify\.com\/(?:user\/[A-Za-z0-9]+\/)?|spotify:)(album|playlist|track|artist)(?:[/:])([A-Za-z0-9]+).*$/;
 
 class Spotify {
   constructor(manager) {
     this.baseURL = "https://api.spotify.com/v1";
     this.options = {
-      playlistLimit: manager.playlistLimit || "5",
-      albumLimit: manager.albumLimit || "5",
-      artistLimit: manager.artistLimit || "5",
-      searchMarket: manager.searchMarket || "US",
-      clientID: manager.clientID || null,
-      clientSecret: manager.clientSecret || null,
+      playlistLimit: manager?.spotify.playlistLimit || 5,
+      albumLimit: manager?.spotify.albumLimit || 5,
+      artistLimit: manager?.spotify.artistLimit || 5,
+      searchMarket: manager?.spotify.searchMarket || "US",
+      clientID: manager?.spotify.clientID || null,
+      clientSecret: manager?.spotify.clientSecret || null,
     };
 
     this.authorization = Buffer.from(
@@ -20,7 +20,7 @@ class Spotify {
   }
 
   check(url) {
-    return pattern.test(url);
+    return Pattern.test(url);
   }
 
   async requestAnonymousToken() {
@@ -93,7 +93,7 @@ class Spotify {
 
   async resolve(url) {
     if (!this.token) await this.requestToken();
-    const [, type, id] = pattern.exec(url) ?? [];
+    const [, type, id] = Pattern.exec(url) ?? [];
 
     switch (type) {
       case "playlist": {
