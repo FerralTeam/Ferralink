@@ -18,6 +18,15 @@ declare class FerraLink extends EventEmitter {
 		options?: SearchOptions
 	): Promise<(SearchResult & SearchError) | LavalinkResponse | null | undefined>;
 	public isCheckURL(url: string): boolean;
+
+	public on<T extends keyof FerraLinkEvents>(
+		eventName: T,
+		listener: (...args: FerraLinkEvents[T]) => any
+	): this;
+	public once<T extends keyof FerraLinkEvents>(
+		eventName: T,
+		listener: (...args: FerraLinkEvents[T]) => any
+	): this;
 }
 
 export interface FerraSpotifyOptions {
@@ -56,6 +65,19 @@ export interface SearchError {
 		message: any;
 		severity: string;
 	};
+}
+
+export interface FerraLinkEvents {
+	trackStart: [player: Player, track: Track];
+	trackEnd: [player: Player, track: Track];
+	queueEnd: [player: Player];
+	PlayerClosed: [player: Player, data: unknown];
+	trackException: [player: Player, data: unknown];
+	PlayerUpdate: [player: Player, data: unknown];
+	trackStuck: [player: Player, data: unknown];
+	PlayerResumed: [player: Player];
+	playerDestroy: [player: Player];
+	playerCreate: [player: Player];
 }
 
 export default FerraLink;
