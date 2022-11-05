@@ -126,8 +126,7 @@ class Player {
 	 * @returns {Player}
 	 */
 	pause(pause = true) {
-		if (typeof pause !== 'boolean')
-			throw new RangeError('[FerraLink] => Pause function must be pass with boolean value.');
+		if (typeof pause !== 'boolean') throw new RangeError('[FerraLink] => Pause function must be pass with boolean value.');
 		if (this.paused === pause || !this.queue.totalSize) return this;
 		this.paused = pause;
 		this.playing = !pause;
@@ -150,9 +149,8 @@ class Player {
 	 * @returns {Player}
 	 */
 	seekTo(position) {
-		if (Number.isNaN(position))
-			throw new RangeError('[FerraLink] => seek Position must be a number.');
-		this.shoukaku.seekTo(Number(position));
+		if (Number.isNaN(position)) throw new RangeError('[FerraLink] => seek Position must be a number.');
+		this.shoukaku.seekTo(position);
 		return this;
 	}
 
@@ -163,8 +161,8 @@ class Player {
 	 */
 	setVolume(volume) {
 		if (Number.isNaN(volume)) throw new RangeError('[FerraLink] => Volume level must be a number.');
-		volume = Math.min(5, Math.max(0, volume));
-		this.shoukaku.setVolume(volume);
+		const volum = Math.min(5, Math.max(0, volume));
+		this.shoukaku.setVolume(volum);
 		this.volume = volume;
 		return this;
 	}
