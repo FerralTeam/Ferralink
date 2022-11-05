@@ -98,9 +98,10 @@ class Player {
 		this.queue.current = newTrack;
 
 		const playOptions = { noReplace: false };
+		const volume = Math.min(5, Math.max(0, this.volume));
 		this.shoukaku
 			.playTrack({ track: this.queue.current.track }, playOptions)
-			.setVolume(this.volume / 100);
+			.setVolume(volume);
 	}
 
 	/**
@@ -162,7 +163,8 @@ class Player {
 	 */
 	setVolume(volume) {
 		if (Number.isNaN(volume)) throw new RangeError('[FerraLink] => Volume level must be a number.');
-		this.shoukaku.setVolume(volume / 100);
+		volume = Math.min(5, Math.max(0, volume));
+		this.shoukaku.setVolume(volume);
 		this.volume = volume;
 		return this;
 	}
