@@ -22,7 +22,7 @@ class Player {
 		this.textId = options.textId;
 
 		/** @type {number} */
-		this.volume = +options.volume;
+		this.volume = options.volume;
 
 		/** @type {shoukaku.Player} */
 		this.shoukaku = options.ShoukakuPlayer;
