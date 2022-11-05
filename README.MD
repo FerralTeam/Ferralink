@@ -18,7 +18,7 @@ A Simple but powerful Lavalink Client for your JavaScript Discord Bot!
 * Discord.js >= 14.6.0.
 
 # 📖 Documentation
-- [FerraLink Docs](https://ferralink.gitbook.io/untitled/).
+- [FerraLink Docs](https://ferralink.gitbook.io/docs/).
 - [Shoukaku Docs](https://deivu.github.io/Shoukaku).
 
 # 📂 Implementation
