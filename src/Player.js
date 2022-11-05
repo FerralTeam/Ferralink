@@ -161,8 +161,8 @@ class Player {
 	 */
 	setVolume(volume) {
 		if (Number.isNaN(volume)) throw new RangeError('[FerraLink] => Volume level must be a number.');
-		const volum = Math.min(5, Math.max(0, volume));
-		this.shoukaku.setVolume(volum);
+		volume = Math.min(5, Math.max(0, volume));
+		this.shoukaku.setVolume(volume);
 		this.volume = volume;
 		return this;
 	}
