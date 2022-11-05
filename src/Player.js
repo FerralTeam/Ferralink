@@ -152,7 +152,7 @@ class Player {
 	seekTo(position) {
 		if (Number.isNaN(position))
 			throw new RangeError('[FerraLink] => seek Position must be a number.');
-		this.shoukaku.seekTo(Number(position) * 1000);
+		this.shoukaku.seekTo(Number(position));
 		return this;
 	}
 
@@ -186,8 +186,7 @@ class Player {
 	 * @returns {Player}
 	 */
 	setVoiceChannel(voiceId) {
-		if (typeof voiceId !== 'string')
-			throw new RangeError('[FerraLink] => voiceId must be a string.');
+		if (typeof voiceId !== 'string') throw new RangeError('[FerraLink] => voiceId must be a string.');
 		this.voiceId = voiceId;
 		return this;
 	}
@@ -198,10 +197,7 @@ class Player {
 	 * @returns {Player}
 	 */
 	setLoop(method) {
-		if (!method)
-			throw new Error(
-				'[FerraLink] => You must have to provide loop method as argument for setLoop.'
-			);
+		if (!method) throw new Error('[FerraLink] => You must have to provide loop method as argument for setLoop.');
 		if (method === 'track' || method === 'queue') {
 			this.loop = method;
 			return this;
