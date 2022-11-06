@@ -35,6 +35,9 @@ class Player {
 
 		/** @type {boolean} */
 		this.playing = false;
+		
+	        /** @type {Data} */
+		this.data = new Map();
 
 		/** @type {LoopType} */
 		this.loop = 'none';
