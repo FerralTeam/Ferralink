@@ -62,7 +62,7 @@ class FerraLink extends EventEmitter {
 				guildId: options.guildId,
 				voiceId: options.voiceId,
 				textId: options.textId,
-				volume: options.volume || 80,
+				volume: options.volume || '80',
 				ShoukakuPlayer
 			});
 			this.players.set(options.guildId, FerraLinkPlayer);
