@@ -81,20 +81,11 @@ class FerraLink extends EventEmitter {
 	 */
 	async search(query, options) {
 		const node = this.getNode();
-		let result;
-		if (this.spotify.check(query)) {
-			result = await this.spotify.resolve(query);
-		} else if (this.isCheckURL(query)) {
-			result = await node.rest.resolve(query);
+		if (this.isCheckURL(query)) {
+			return this.trackUrl(query, node);
 		} else {
-			const source = options?.engine || 'ytsearch';
-			if (source === 'spsearch') {
-				result = await this.spotify.search(query);
-			} else {
-				result = await node.rest.resolve(`${source}:${query}`);
-			}
+			return this.trackText(query, options, node);
 		}
-		return result;
 	}
 
 	/**
@@ -108,6 +99,34 @@ class FerraLink extends EventEmitter {
 			return true;
 		} catch (e) {
 			return false;
+		}
+	}
+
+	/**
+	 * Search a song with trackUrl.
+	 * @param {string} track
+	 * @returns {Promise<shoukaku.LavalinkResponse>}
+	 */
+	async trackUrl(track, node) {
+		if (this.spotify.check(track)) {
+			return await this.spotify.resolve(track);
+		} else {
+			return await node.rest.resolve(track);
+		}
+	}
+
+	/**
+	 * Search a song with trackText.
+	 * @param {string} track
+	 * @param {FerraLinkSearchOptions} source
+	 * @returns {Promise<shoukaku.LavalinkResponse>}
+	 */
+	async trackText(track, source, node) {
+		const engines = source?.engine || 'ytsearch';
+		if (engines === 'spsearch') {
+			return await this.spotify.search(track);
+		} else {
+			return await node.rest.resolve(`${engines}:${track}`);
 		}
 	}
 
