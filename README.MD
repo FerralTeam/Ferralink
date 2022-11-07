@@ -146,7 +146,7 @@ message.channel.send({content: `Queued ${tracks[0].info.title}`});
 >
 > Inspired by [kazagumo](https://www.npmjs.com/package/kazagumo), [Poru](https://www.npmjs.com/package/poru) and [erela.js](https://www.npmjs.com/package/erela.js).
 
-## Our Bots 
+## Some bots made by FerraLink
 > **[OtterBot](https://discord.com/api/oauth2/authorize?client_id=686245252717477966&permissions=1266213579990&scope=applications.commands%20bot) By Corgi**
 
 > **[KIRA](https://discord.com/api/oauth2/authorize?client_id=823896901799641168&permissions=2184572248&scope=bot%20applications.commands) By Vaibhav**
