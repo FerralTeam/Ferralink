@@ -7,13 +7,13 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"repository": "Cd-corgi/Ferralink",
+	"repository": "FerralTeam/Ferralink",
 	"author": "vkamsingh, corgi-cd",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/Cd-corgi/Ferralink/issues"
+		"url": "https://github.com/FerralTeam/Ferralink/issues"
 	},
-	"homepage": "https://github.com/Cd-corgi/Ferralink#readme",
+	"homepage": "https://github.com/FerralTeam/Ferralink#readme",
 	"dependencies": {
 		"shoukaku": "^3.2.2",
 		"undici": "^5.12.0"
