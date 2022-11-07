@@ -84,7 +84,7 @@ volume: 100,
 deaf: true,
 });
 
-const resolve = await client.FerraLink.search(queue, { engine: "spsearch" }); // spsearch is work for search spotify tracks.
+const resolve = await client.FerraLink.search(args.join(" "), { engine: "spsearch" }); // spsearch is work for search spotify tracks.
 const { loadType, tracks, playlistInfo } = resolve;
 
 if (loadType === "NO_MATCHES" || !tracks.length) return;
