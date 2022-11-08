@@ -223,6 +223,7 @@ class Player {
 	destroy() {
 		this.disconnect();
 		this.shoukaku.connection.disconnect();
+		this.shoukaku.removeAllListeners();
 		this.manager.emit('playerDestroy', this);
 		this.manager.players.delete(this.guildId);
 	}
