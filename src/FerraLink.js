@@ -33,16 +33,6 @@ class FerraLink extends EventEmitter {
 	}
 
 	/**
-	 * Get a lavalink node.
-	 * @returns {import('shoukaku').Node}
-	 */
-	getNode() {
-		const node = this.shoukaku.getNode();
-		if (!node) throw new Error('[FerraLink] => No nodes are existing.');
-		return node;
-	}
-
-	/**
 	 * Create a new player.
 	 * @param {FerraLinkCreatePlayerOptions} options
 	 * @returns {Promise<Player>}
@@ -80,54 +70,31 @@ class FerraLink extends EventEmitter {
 	 * @returns {Promise<shoukaku.LavalinkResponse>}
 	 */
 	async search(query, options) {
-		const node = this.getNode();
-		if (this.isCheckURL(query)) {
-			return this.trackUrl(query, node);
+		const regex = /^https?:\/\//;
+		if (regex.test(query)) {
+			if (this.spotify.check(query)) return await this.spotify.resolve(query);
+			return await this.getNode().rest.resolve(query);
 		} else {
-			return this.trackText(query, options, node);
+			switch (options?.engine) {
+				case 'spsearch': {
+					return this.spotify.search(query);
+				}
+				default: {
+					const source = options?.engine || 'ytsearch';
+					return await this.getNode().rest.resolve(`${source}:${query}`);
+				}
+			}
 		}
 	}
 
 	/**
-	 * Check if an string is a URL.
-	 * @param {string} string
-	 * @returns {boolean}
+	 * Get a lavalink node.
+	 * @returns {import('shoukaku').Node}
 	 */
-	isCheckURL(string) {
-		try {
-			new URL(string);
-			return true;
-		} catch (e) {
-			return false;
-		}
-	}
-
-	/**
-	 * Search a song with trackUrl.
-	 * @param {string} track
-	 * @returns {Promise<shoukaku.LavalinkResponse>}
-	 */
-	async trackUrl(track, node) {
-		if (this.spotify.check(track)) {
-			return await this.spotify.resolve(track);
-		} else {
-			return await node.rest.resolve(track);
-		}
-	}
-
-	/**
-	 * Search a song with trackText.
-	 * @param {string} track
-	 * @param {FerraLinkSearchOptions} source
-	 * @returns {Promise<shoukaku.LavalinkResponse>}
-	 */
-	async trackText(track, source, node) {
-		const engines = source?.engine || 'ytsearch';
-		if (engines === 'spsearch') {
-			return await this.spotify.search(track);
-		} else {
-			return await node.rest.resolve(`${engines}:${track}`);
-		}
+	getNode() {
+		const node = this.shoukaku.getNode();
+		if (!node) throw new Error('[FerraLink] => No nodes are existing.');
+		return node;
 	}
 
 	/**
