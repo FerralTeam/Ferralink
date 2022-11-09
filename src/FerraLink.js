@@ -29,7 +29,9 @@ class FerraLink extends EventEmitter {
 		this.players = new Map();
 
 		/** @type {Spotify} */
-		this.spotify = new Spotify(options);
+		if (options?.spotify) {
+			this.spotify = new Spotify(options);
+		}
 	}
 
 	/**
@@ -52,7 +54,7 @@ class FerraLink extends EventEmitter {
 				guildId: options.guildId,
 				voiceId: options.voiceId,
 				textId: options.textId,
-				volume: options.volume || '80',
+				volume: `${options.volume}` || '80',
 				ShoukakuPlayer
 			});
 			this.players.set(options.guildId, FerraLinkPlayer);
@@ -61,6 +63,16 @@ class FerraLink extends EventEmitter {
 		} else {
 			return existing;
 		}
+	}
+
+	/**
+	 * Get a lavalink node.
+	 * @returns {import('shoukaku').Node}
+	 */
+	getNode() {
+		const node = this.shoukaku.getNode('auto');
+		if (!node) throw new Error('[FerraLink] => No nodes are existing.');
+		return node;
 	}
 
 	/**
@@ -85,16 +97,6 @@ class FerraLink extends EventEmitter {
 				}
 			}
 		}
-	}
-
-	/**
-	 * Get a lavalink node.
-	 * @returns {import('shoukaku').Node}
-	 */
-	getNode() {
-		const node = this.shoukaku.getNode();
-		if (!node) throw new Error('[FerraLink] => No nodes are existing.');
-		return node;
 	}
 
 	/**
