@@ -29,7 +29,7 @@ class FerraLink extends EventEmitter {
 		this.players = new Map();
 
 		/** @type {Spotify} */
-		if (options?.spotify) {
+		if (options.spotify) {
 			this.spotify = new Spotify(options);
 		}
 	}
