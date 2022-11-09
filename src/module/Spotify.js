@@ -17,12 +17,12 @@ class Spotify {
 
 		/** @private */
 		this.options = {
-			playlistLimit: manager?.spotify.playlistLimit || 5,
-			albumLimit: manager?.spotify.albumLimit || 5,
-			artistLimit: manager?.spotify.artistLimit || 5,
-			searchMarket: manager?.spotify.searchMarket || 'US',
-			clientID: manager?.spotify.clientID || null,
-			clientSecret: manager?.spotify.clientSecret || null
+			playlistLimit: manager?.playlistLimit || 5,
+			albumLimit: manager?.albumLimit || 5,
+			artistLimit: manager?.artistLimit || 5,
+			searchMarket: manager?.searchMarket || 'US',
+			clientID: manager?.clientID || null,
+			clientSecret: manager?.clientSecret || null
 		};
 
 		/** @private */
