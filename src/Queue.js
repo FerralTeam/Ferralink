@@ -1,18 +1,9 @@
 const shoukaku = require('shoukaku');
+
 /**
  * @extends Array<shoukaku.Track>
  */
 class Queue extends Array {
-	constructor() {
-		super();
-
-		/** @type {shoukaku.Track|null|undefined} */
-		this.current = null;
-
-		/** @type {shoukaku.Track|null|undefined} */
-		this.previous = null;
-	}
-
 	/**
 	 * Get the queue size
 	 * @returns {number}
@@ -44,6 +35,12 @@ class Queue extends Array {
 	get durationLength() {
 		return this.reduce((acc, cur) => acc + (cur.length || 0), 0);
 	}
+
+	/** @type {shoukaku.Track|null|undefined} */
+	current = null;
+
+	/** @type {shoukaku.Track|null|undefined} */
+	previous = null;
 
 	/**
 	 * Add a track to the queue
