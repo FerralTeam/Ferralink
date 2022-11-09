@@ -10,6 +10,7 @@ declare class Player {
     queue: Queue;
     paused: boolean;
     playing: boolean;
+    data: Map<string | number, any>;
     loop: LoopType;
     get exists(): boolean;
     play(): Promise<void>;

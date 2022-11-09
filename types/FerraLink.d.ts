@@ -4,10 +4,9 @@ declare class FerraLink {
     shoukaku: Shoukaku;
     players: Map<string, Player>;
     spotify: Spotify;
-    getNode(): import('shoukaku').Node;
     createPlayer(options: FerraLinkCreatePlayerOptions): Promise<Player>;
     search(query: string, options: FerraLinkSearchOptions): Promise<shoukaku.LavalinkResponse>;
-    isCheckURL(string: string): boolean;
+    getNode(): import('shoukaku').Node;
     on<K extends keyof FerraLinkEvents>(event: K, listener: (...args: FerraLinkEvents[K]) => any): FerraLink;
     once<K_1 extends keyof FerraLinkEvents>(event: K_1, listener: (...args: FerraLinkEvents[K_1]) => any): FerraLink;
 }
