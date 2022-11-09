@@ -4,7 +4,7 @@ const shoukaku = require('shoukaku');
  */
 class Queue extends Array {
 	constructor() {
-		super(...arguments);
+		super();
 
 		/** @type {shoukaku.Track|null|undefined} */
 		this.current = null;
