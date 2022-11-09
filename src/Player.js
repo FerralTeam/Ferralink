@@ -47,15 +47,7 @@ class Player {
 			this.playing = true;
 			this.manager.emit('trackStart', this, this.queue.current);
 		});
-		player.on('end', data => {
-			if (data.reason === 'REPLACED') return this.manager.emit('trackEnd', this);
-			if (['LOAD_FAILED', 'CLEAN_UP'].includes(data.reason)) {
-				this.queue.previous = this.queue.current;
-				this.playing = false;
-				this.manager.emit('trackEnd', this, this.queue.current);
-				this.queue.current = null;
-				return this.play();
-			}
+		player.on('end', () => {
 			if (this.loop === 'track' && this.queue.current) this.queue.unshift(this.queue.current);
 			if (this.loop === 'queue' && this.queue.current) this.queue.push(this.queue.current);
 
@@ -63,8 +55,9 @@ class Player {
 			const current = this.queue.current;
 			this.queue.current = null;
 
-			if (this.queue.length) this.manager.emit('trackEnd', this, current);
-			else {
+			if (this.queue.length) {
+				this.manager.emit('trackEnd', this, current);
+			} else {
 				this.playing = false;
 				return this.manager.emit('queueEnd', this);
 			}
@@ -84,10 +77,10 @@ class Player {
 	}
 
 	/**
-     * Pause or resume the player
-     * @param {boolean} [pause]
-     * @returns {Player}
-     */
+	 * Pause or resume the player
+	 * @param {boolean} [pause]
+	 * @returns {Player}
+	 */
 	pause(pause = true) {
 		if (typeof pause !== 'boolean') throw new RangeError('[FerraLink] => Pause function must be pass with boolean value.');
 		if (this.paused === pause || !this.queue.totalSize) return this;
@@ -164,6 +157,30 @@ class Player {
 		}
 		this.loop = 'none';
 		return this;
+	}
+
+	/**
+	 * Search a song in Lavalink providers.
+	 * @param {string} query
+	 * @param {FerraLinkSearchOptions} options
+	 * @returns {Promise<shoukaku.LavalinkResponse>}
+	 */
+	async search(query, options) {
+		const regex = /^https?:\/\//;
+		if (regex.test(query)) {
+			if (this.manager.spotify.check(query)) return await this.manager.spotify.resolve(query);
+			return await this.shoukaku.node.rest.resolve(query);
+		} else {
+			switch (options.engine) {
+				case 'spsearch': {
+					return this.manager.spotify.search(query);
+				}
+				default: {
+					const source = options?.engine || 'ytsearch';
+					return await this.shoukaku.node.rest.resolve(`${source}:${query}`);
+				}
+			}
+		}
 	}
 
 	/**
