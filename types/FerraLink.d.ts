@@ -3,10 +3,10 @@ declare class FerraLink {
     constructor(client: any, nodes: import('shoukaku').NodeOption[], options: FerraLinkOptions);
     shoukaku: Shoukaku;
     players: Map<string, Player>;
-    spotify: Spotify;
+    spotify: Spotify | undefined;
     createPlayer(options: FerraLinkCreatePlayerOptions): Promise<Player>;
-    search(query: string, options: FerraLinkSearchOptions): Promise<shoukaku.LavalinkResponse>;
     getNode(): import('shoukaku').Node;
+    search(query: string, options: FerraLinkSearchOptions): Promise<shoukaku.LavalinkResponse>;
     on<K extends keyof FerraLinkEvents>(event: K, listener: (...args: FerraLinkEvents[K]) => any): FerraLink;
     once<K_1 extends keyof FerraLinkEvents>(event: K_1, listener: (...args: FerraLinkEvents[K_1]) => any): FerraLink;
 }
@@ -25,7 +25,7 @@ type FerraLinkCreatePlayerOptions = {
     deaf?: boolean | undefined;
 };
 type FerraLinkSearchOptions = {
-    engine?: "ytsearch" | "ytmsearch" | "spsearch" | "scsearch" | undefined;
+    engine?: "spsearch" | "ytsearch" | "ytmsearch" | "scsearch" | undefined;
 };
 import shoukaku = require("shoukaku");
 type FerraLinkEvents = {

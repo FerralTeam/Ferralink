@@ -36,7 +36,7 @@ class Player {
 		/** @type {boolean} */
 		this.playing = false;
 
-		/** @type {Data} */
+		/** @type {Map<any, any>} */
 		this.data = new Map();
 
 		/** @type {LoopType} */
@@ -162,7 +162,7 @@ class Player {
 	/**
 	 * Search a song in Lavalink providers.
 	 * @param {string} query
-	 * @param {FerraLinkSearchOptions} options
+	 * @param {FerraLink.FerraLinkSearchOptions} options
 	 * @returns {Promise<shoukaku.LavalinkResponse>}
 	 */
 	async search(query, options) {

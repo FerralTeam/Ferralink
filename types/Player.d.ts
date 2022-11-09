@@ -10,11 +10,8 @@ declare class Player {
     queue: Queue;
     paused: boolean;
     playing: boolean;
-    data: Map<string | number, any>;
+    data: Map<any, any>;
     loop: LoopType;
-    get exists(): boolean;
-    play(): Promise<void>;
-    resolve(track: shoukaku.Track): Promise<shoukaku.Track>;
     pause(pause?: boolean | undefined): Player;
     skip(): Player;
     seekTo(position: number): Player;
@@ -22,6 +19,9 @@ declare class Player {
     setTextChannel(textId: string): Player;
     setVoiceChannel(voiceId: string): Player;
     setLoop(method: LoopType): Player;
+    search(query: string, options: FerraLink.FerraLinkSearchOptions): Promise<shoukaku.LavalinkResponse>;
+    play(): Promise<void>;
+    resolve(track: shoukaku.Track): Promise<shoukaku.Track>;
     disconnect(): void;
     destroy(): void;
 }
