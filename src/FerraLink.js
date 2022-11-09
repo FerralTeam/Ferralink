@@ -87,7 +87,7 @@ class FerraLink extends EventEmitter {
 			if (this.spotify.check(query)) return await this.spotify.resolve(query);
 			return await this.getNode().rest.resolve(query);
 		} else {
-			switch (options?.engine) {
+			switch (options.engine) {
 				case 'spsearch': {
 					return this.spotify.search(query);
 				}
