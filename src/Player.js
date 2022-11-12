@@ -42,12 +42,11 @@ class Player {
 		/** @type {LoopType} */
 		this.loop = 'none';
 
-		const player = this.shoukaku;
-		player.on('start', () => {
+		this.shoukaku.on('start', () => {
 			this.playing = true;
 			this.manager.emit('trackStart', this, this.queue.current);
 		});
-		player.on('end', () => {
+		this.shoukaku.on('end', () => {
 			if (this.loop === 'track' && this.queue.current) this.queue.unshift(this.queue.current);
 			if (this.loop === 'queue' && this.queue.current) this.queue.push(this.queue.current);
 
@@ -63,17 +62,17 @@ class Player {
 			}
 			this.play();
 		});
-		player.on('closed', (data = WebSocketClosedEvent) => {
+		this.shoukaku.on('closed', (data = WebSocketClosedEvent) => {
 			this.playing = false;
 			this.manager.emit('PlayerClosed', this, data);
 		});
-		player.on('exception', (data = TrackExceptionEvent) => {
+		this.shoukaku.on('exception', (data = TrackExceptionEvent) => {
 			this.playing = false;
 			this.manager.emit('trackException', this, data);
 		});
-		player.on('update', (data = PlayerUpdate) => this.manager.emit('PlayerUpdate', this, data));
-		player.on('stuck', (data = TrackStuckEvent) => this.manager.emit('trackStuck', this, data));
-		player.on('resumed', () => this.manager.emit('PlayerResumed', this));
+		this.shoukaku.on('update', (data = PlayerUpdate) => this.manager.emit('PlayerUpdate', this, data));
+		this.shoukaku.on('stuck', (data = TrackStuckEvent) => this.manager.emit('trackStuck', this, data));
+		this.shoukaku.on('resumed', () => this.manager.emit('PlayerResumed', this));
 	}
 
 	/**
@@ -220,6 +219,7 @@ class Player {
 	 */
 	disconnect() {
 		this.pause(true);
+		this.shoukaku.connection.disconnect();
 		this.voiceId = null;
 		this.queue.current = null;
 		this.queue.clear();
@@ -231,10 +231,10 @@ class Player {
 	 */
 	destroy() {
 		this.disconnect();
-		this.shoukaku.connection.disconnect();
+		this.shoukaku.connection.destroyLavalinkPlayer();
 		this.shoukaku.removeAllListeners();
-		this.manager.emit('playerDestroy', this);
 		this.manager.players.delete(this.guildId);
+		this.manager.emit('PlayerDestroy', this);
 	}
 }
 
