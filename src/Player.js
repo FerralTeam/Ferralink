@@ -193,7 +193,7 @@ class Player {
 		this.queue.current = current;
 		this.shoukaku
 	            .setVolume(this.volume / 100)
-	            .playTrack({track: this.queue.current.track});
+	            .playTrack({track: this.queue.current.track}, {noReplace: false});
 			
 	}
 
