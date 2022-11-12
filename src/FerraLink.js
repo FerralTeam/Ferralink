@@ -12,7 +12,7 @@ class FerraLink extends EventEmitter {
 	 */
 	constructor(client, Nodes, ShoukakuOptions, options) {
 		super();
-		
+
 		/** @type {Shoukaku} */
 		this.shoukaku = new Shoukaku(new Connectors.DiscordJS(client), Nodes, ShoukakuOptions);
 
@@ -51,9 +51,8 @@ class FerraLink extends EventEmitter {
 			this.players.set(options.guildId, FerraLinkPlayer);
 			this.emit('PlayerCreate', FerraLinkPlayer);
 			return FerraLinkPlayer;
-		} else {
-			return existing;
 		}
+		return existing;
 	}
 
 	/**
