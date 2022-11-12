@@ -188,9 +188,9 @@ class Player {
 	 * @returns {Promise<void>}
 	 */
 	async play() {
-		let Track = this.queue.shift();
-		if (!Track.track) Track = await this.resolve(Track);
-		this.queue.current = Track;
+		let current = this.queue.shift();
+		if (!current.track) current = await this.resolve(current);
+		this.queue.current = current;
 
 		const playOptions = { noReplace: false };
 		this.shoukaku.setVolume(this.volume / 100).playTrack({track: this.queue.current.track});
