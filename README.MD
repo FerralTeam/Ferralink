@@ -48,7 +48,7 @@ const { FerraLink } = require("ferra-link");
 > 2. *The password is from your `application.yml`.*
 
 ```js
-const nodes = [{
+const Nodes = [{
 name: "Node",
 url: "localhost:2333",
 auth: "youshallpass",
@@ -58,7 +58,7 @@ secure: false
 
 ## 3. Defining your shoukakuOptions
 ```js
-const shoukakuOptions = {
+const ShoukakuOptions = {
 moveOnDisconnect: false, 
 resumable: false, 
 resumableTimeout: 60, 
@@ -72,7 +72,7 @@ restTimeout: 60000
 *Creating in a way like the code example you can import the bot, nodes and shoukakuOptions.*
 
 ```js
-client.FerraLink = new FerraLink(client, nodes, shoukakuOptions, {
+client.FerraLink = new FerraLink(client, Nodes, ShoukakuOptions, {
 spotify: {
  playlistLimit: "Playlist search limit here", //default limit is 5 = 500.
  albumLimit: "Album search limit here", //default limit is 5 = 500.
