@@ -32,27 +32,26 @@ class FerraLink extends EventEmitter {
 	 */
 	async createPlayer(options) {
 		const existing = this.players.get(options.guildId);
-		if (!existing) {
-			const node = this.getNode();
-			const ShoukakuPlayer = await node.joinChannel({
-				guildId: options.guildId,
-				channelId: options.voiceId,
-				shardId: options.shardId,
-				deaf: options.deaf || true
-			});
-			if (!ShoukakuPlayer) return null;
-			const FerraLinkPlayer = new Player(this, {
-				guildId: options.guildId,
-				voiceId: options.voiceId,
-				textId: options.textId,
-				volume: `${options.volume}` || '80',
-				ShoukakuPlayer
-			});
-			this.players.set(options.guildId, FerraLinkPlayer);
-			this.emit('PlayerCreate', FerraLinkPlayer);
-			return FerraLinkPlayer;
-		}
-		return existing;
+		if (existing) return existing;
+
+		const node = this.getNode();
+		const ShoukakuPlayer = await node.joinChannel({
+			guildId: options.guildId,
+			channelId: options.voiceId,
+			shardId: options.shardId,
+			deaf: options.deaf || true
+		});
+		if (!ShoukakuPlayer) return null;
+		const FerraLinkPlayer = new Player(this, {
+			guildId: options.guildId,
+			voiceId: options.voiceId,
+			textId: options.textId,
+			volume: `${options.volume}` || '80',
+			ShoukakuPlayer
+		});
+		this.players.set(options.guildId, FerraLinkPlayer);
+		this.emit('PlayerCreate', FerraLinkPlayer);
+		return FerraLinkPlayer;
 	}
 
 	/**
