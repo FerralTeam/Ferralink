@@ -32,7 +32,7 @@ class FerraLink extends EventEmitter {
 	 */
 	async createPlayer(options) {
 		const existing = this.players.get(options.guildId);
-		if (existing) return existing;
+		if (!existing) {
 			const node = this.getNode();
 			const ShoukakuPlayer = await node.joinChannel({
 				guildId: options.guildId,
@@ -51,6 +51,9 @@ class FerraLink extends EventEmitter {
 			this.players.set(options.guildId, FerraLinkPlayer);
 			this.emit('PlayerCreate', FerraLinkPlayer);
 			return FerraLinkPlayer;
+		} else {
+			return existing;
+		}
 	}
 
 	/**
