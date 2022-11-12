@@ -144,7 +144,7 @@ message.channel.send({content: `Queued ${tracks[0].info.title}`});
 |   PlayerUpdate    | player, data	  | Event of the player update.   |
 |   trackStuck      | player, data	  | Event of the track stuck.     |
 |   PlayerResumed   | player          | Event of the player resumed.  |
-|   playerDestroy   | player	        | Event of the player destroyed.|
+|   PlayerDestroy   | player	        | Event of the player destroyed.|
 |   PlayerCreate    | player	        | Event of the player create.   |
 </center>
 
