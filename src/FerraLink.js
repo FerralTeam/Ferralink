@@ -1,5 +1,5 @@
 const { EventEmitter } = require('events');
-const FerralinkShoukaku = require('./module/Shoukaku');
+const { Shoukaku, Connectors } = require('shoukaku');
 const shoukaku = require('shoukaku');
 const Player = require('./Player');
 const Spotify = require('./module/Spotify');
@@ -14,7 +14,7 @@ class FerraLink extends EventEmitter {
 		super();
 		
 		/** @type {Shoukaku} */
-		this.shoukaku = new FerralinkShoukaku(new Connectors.DiscordJS(client), Nodes, ShoukakuOptions);
+		this.shoukaku = new Shoukaku(new Connectors.DiscordJS(client), Nodes, ShoukakuOptions);
 
 		/** @type {Map<string, Player>} */
 		this.players = new Map();
