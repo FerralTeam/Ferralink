@@ -49,7 +49,7 @@ const { FerraLink } = require("ferra-link");
 
 ```js
 const Nodes = [{
-name: "Node",
+name: "Lavalink",
 url: "localhost:2333",
 auth: "youshallpass",
 secure: false
