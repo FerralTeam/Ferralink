@@ -191,9 +191,9 @@ class Player {
 		let current = this.queue.shift();
 		if (!current.track) current = await this.resolve(current);
 		this.queue.current = current;
-
-		const playOptions = { noReplace: false };
-		this.shoukaku.setVolume(this.volume / 100).playTrack({track: this.queue.current.track});
+		this.shoukaku
+	            .setVolume(this.volume / 100)
+	            .playTrack({track: this.queue.current.track});
 			
 	}
 
