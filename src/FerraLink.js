@@ -1,13 +1,6 @@
 const { EventEmitter } = require('events');
 const { Shoukaku, Connectors } = require('shoukaku');
 const shoukaku = require('shoukaku');
-const ShoukakuOptions = {
-	moveOnDisconnect: false,
-	resumable: false,
-	resumableTimeout: 30,
-	reconnectTries: 15,
-	restTimeout: 60000
-};
 const Player = require('./Player');
 const Spotify = require('./module/Spotify');
 
@@ -17,13 +10,13 @@ class FerraLink extends EventEmitter {
 	 * @param {import('shoukaku').NodeOption[]} nodes
 	 * @param {FerraLinkOptions} options
 	 */
-	constructor(client, nodes, options) {
+	constructor(client, nodes, shoukakuOptions, options) {
 		super();
 		if (!client) throw new Error('[FerraLink] => You need to provide client.');
 		if (!nodes) throw new Error('[FerraLink] => You need to provide nodes.');
 
 		/** @type {Shoukaku} */
-		this.shoukaku = new Shoukaku(new Connectors.DiscordJS(client), nodes, ShoukakuOptions);
+		this.shoukaku = new Shoukaku(new Connectors.DiscordJS(client), nodes, shoukakuOptions);
 
 		/** @type {Map<string, Player>} */
 		this.players = new Map();
