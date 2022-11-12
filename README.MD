@@ -56,12 +56,23 @@ secure: false
 }];
 ```
 
-## 3. Set the Initilizer of Ferralink
+## 3. Defining your shoukakuOptions
+```js
+const shoukakuOptions = {
+moveOnDisconnect: false, 
+resumable: false, 
+resumableTimeout: 60, 
+reconnectTries: 10, 
+restTimeout: 60000
+};
+```
 
-*Creating in a way like the code example you can import the bot and nodes.*
+## 4. Set the Initilizer of Ferralink
+
+*Creating in a way like the code example you can import the bot, nodes and shoukakuOptions.*
 
 ```js
-client.FerraLink = new FerraLink(client, nodes, {
+client.FerraLink = new FerraLink(client, nodes, shoukakuOptions, {
 spotify: {
  playlistLimit: "Playlist search limit here", //default limit is 5 = 500.
  albumLimit: "Album search limit here", //default limit is 5 = 500.
@@ -73,7 +84,7 @@ spotify: {
 });
 ```
 
-## 4. A small example to create play command.
+## 5. A small example to create play command.
 ```js
 const player = await client.FerraLink.createPlayer({
 guildId: message.guild.id,
