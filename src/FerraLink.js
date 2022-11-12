@@ -10,13 +10,13 @@ class FerraLink extends EventEmitter {
 	 * @param {import('shoukaku').NodeOption[]} nodes
 	 * @param {FerraLinkOptions} options
 	 */
-	constructor(client, nodes, shoukakuOptions, options) {
+	constructor(client, Nodes, ShoukakuOptions, options) {
 		super();
 		if (!client) throw new Error('[FerraLink] => You need to provide client.');
 		if (!nodes) throw new Error('[FerraLink] => You need to provide nodes.');
 
 		/** @type {Shoukaku} */
-		this.shoukaku = new Shoukaku(new Connectors.DiscordJS(client), nodes, shoukakuOptions);
+		this.shoukaku = new Shoukaku(new Connectors.DiscordJS(client), Nodes, ShoukakuOptions);
 
 		/** @type {Map<string, Player>} */
 		this.players = new Map();
