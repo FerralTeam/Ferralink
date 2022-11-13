@@ -58,10 +58,6 @@ secure: false
 }];
 
 client.FerraLink = new FerraLink({
- playlistLimit: "Playlist search limit here", //default limit is 5 = 500.
- albumLimit: "Album search limit here", //default limit is 5 = 500.
- artistLimit: "Artist search limit here", //default limit is 5 = 500.
- searchMarket: "searchMarket(ISO code) here", //default searchMarket is US.
  clientID: "Your spotify clientId here",
  clientSecret: "Your spotify clientSecret here"
 }, new Shoukaku(new Connectors.DiscordJS(client), Nodes, ShoukakuOptions));
