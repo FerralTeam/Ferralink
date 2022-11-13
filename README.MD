@@ -34,30 +34,14 @@ A Simple but powerful Lavalink Client for your JavaScript Discord Bot!
 
 # How to Setup our FerraLink
 
-## 1. Declaring FerraLink
+## 1. Set the Initilizer of Ferralink
+
+*Creating in a way like the code example you can import the bot, nodes and shoukakuOptions.*
 
 ```js
 const { FerraLink } = require("ferra-link");
-```
+const { Shoukaku, Connectors } = require('shoukaku');
 
-
-## 2. Defining your Nodes
-
-> 1. *This setp depends if you have any Hosting to get your Lavalink Server.*
-> 
-> 2. *The password is from your `application.yml`.*
-
-```js
-const Nodes = [{
-name: "Lavalink",
-url: "localhost:2333",
-auth: "youshallpass",
-secure: false
-}];
-```
-
-## 3. Defining your shoukakuOptions
-```js
 const ShoukakuOptions = {
 moveOnDisconnect: false, 
 resumable: false, 
@@ -65,26 +49,25 @@ resumableTimeout: 60,
 reconnectTries: 10, 
 restTimeout: 60000
 };
-```
 
-## 4. Set the Initilizer of Ferralink
+const Nodes = [{
+name: "Lavalink",
+url: "localhost:2333",
+auth: "youshallpass",
+secure: false
+}];
 
-*Creating in a way like the code example you can import the bot, nodes and shoukakuOptions.*
-
-```js
-client.FerraLink = new FerraLink(client, Nodes, ShoukakuOptions, {
-spotify: {
+client.FerraLink = new FerraLink({
  playlistLimit: "Playlist search limit here", //default limit is 5 = 500.
  albumLimit: "Album search limit here", //default limit is 5 = 500.
  artistLimit: "Artist search limit here", //default limit is 5 = 500.
  searchMarket: "searchMarket(ISO code) here", //default searchMarket is US.
  clientID: "Your spotify clientId here",
  clientSecret: "Your spotify clientSecret here"
-}
-});
+}, new Shoukaku(new Connectors.DiscordJS(client), Nodes, ShoukakuOptions));
 ```
 
-## 5. A small example to create play command.
+## 2. A small example to create play command.
 ```js
 const player = await client.FerraLink.createPlayer({
 guildId: message.guild.id,
