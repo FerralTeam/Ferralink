@@ -4,7 +4,7 @@
 
 [![Discord](https://img.shields.io/discord/1035595149385945088?color=fa860a&logo=discord&logoColor=white)](https://discord.gg/7M6yGBTn79)
 [![npm version](https://img.shields.io/npm/v/ferra-link?style=flat-square)](https://www.npmjs.com/package/ferra-link)
-[![npm download](https://img.shields.io/npm/dt/ferra-link.svg?maxAge=3600)]([https://www.npmjs.com/package/ferra-link](https://www.npmjs.com/package/ferra-link))
+[![npm download](https://img.shields.io/npm/dt/ferra-link.svg?maxAge=3600)](https://www.npmjs.com/package/ferra-link)
 ![GitHub issues](https://img.shields.io/github/issues-raw/Cd-corgi/Ferralink?style=flat-square)
 
   
@@ -143,6 +143,7 @@ message.channel.send({content: `Queued ${tracks[0].info.title}`});
 |   trackException  | player, data	  | Event of the track exception. |
 |   PlayerUpdate    | player, data	  | Event of the player update.   |
 |   trackStuck      | player, data	  | Event of the track stuck.     |
+|   trackError      | player, error   | Event of the track error.     |
 |   PlayerResumed   | player          | Event of the player resumed.  |
 |   PlayerDestroy   | player	        | Event of the player destroyed.|
 |   PlayerCreate    | player	        | Event of the player create.   |
