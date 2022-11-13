@@ -42,6 +42,13 @@ A Simple but powerful Lavalink Client for your JavaScript Discord Bot!
 const { FerraLink } = require("ferra-link");
 const { Shoukaku, Connectors } = require('shoukaku');
 
+const Nodes = [{
+name: "Lavalink",
+url: "localhost:2333",
+auth: "youshallpass",
+secure: false
+}];
+
 const ShoukakuOptions = {
 moveOnDisconnect: false, 
 resumable: false, 
@@ -49,13 +56,6 @@ resumableTimeout: 60,
 reconnectTries: 10, 
 restTimeout: 60000
 };
-
-const Nodes = [{
-name: "Lavalink",
-url: "localhost:2333",
-auth: "youshallpass",
-secure: false
-}];
 
 client.FerraLink = new FerraLink({
  clientID: "Your spotify clientId here",
