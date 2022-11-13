@@ -43,7 +43,6 @@ class FerraLink extends EventEmitter {
 			shardId: options.shardId,
 			deaf: options.deaf || true
 		});
-		if (!ShoukakuPlayer) return null;
 		const FerraLinkPlayer = new Player(this, {
 			guildId: options.guildId,
 			voiceId: options.voiceId,
