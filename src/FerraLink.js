@@ -1,5 +1,4 @@
 const { EventEmitter } = require('events');
-const { Shoukaku, Connectors } = require('shoukaku');
 const shoukaku = require('shoukaku');
 const Player = require('./Player');
 const Spotify = require('./module/Spotify');
@@ -10,18 +9,18 @@ class FerraLink extends EventEmitter {
 	 * @param {import('shoukaku').NodeOption[]} nodes
 	 * @param {FerraLinkOptions} options
 	 */
-	constructor(client, Nodes, ShoukakuOptions, options) {
+	constructor(options, manager) {
 		super();
 
 		/** @type {Shoukaku} */
-		this.shoukaku = new Shoukaku(new Connectors.DiscordJS(client), Nodes, ShoukakuOptions);
+		this.shoukaku = manager;
 
 		/** @type {Map<string, Player>} */
 		this.players = new Map();
 
 		/** @type {Spotify} */
-		if (options.spotify) {
-			this.spotify = new Spotify(options.spotify);
+		if (options) {
+			this.spotify = new Spotify(options);
 		}
 	}
 
