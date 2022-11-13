@@ -34,7 +34,9 @@ class FerraLink extends EventEmitter {
 		const existing = this.players.get(options.guildId);
 		if (existing) return existing;
 
-		const node = this.getNode();
+		const node = this.shoukaku.getNode('auto');
+		if (!node) return console.log('[FerraLink] => No nodes are existing.');
+
 		const ShoukakuPlayer = await node.joinChannel({
 			guildId: options.guildId,
 			channelId: options.voiceId,
@@ -53,15 +55,21 @@ class FerraLink extends EventEmitter {
 		this.emit('PlayerCreate', FerraLinkPlayer);
 		return FerraLinkPlayer;
 	}
-
+	
 	/**
-	 * Get a lavalink node.
-	 * @returns {import('shoukaku').Node}
-	 */
-	getNode() {
-		const node = this.shoukaku.getNode('auto');
-		if (!node) throw new Error('[FerraLink] => No nodes are existing.');
-		return node;
+     * Resolve a track
+     * @param {shoukaku.Track} track
+     * @returns {Promise<shoukaku.Track>}
+     */
+	async resolve(track, node) {
+		const query = [track.info.author, track.info.title].filter(x => !!x).join(' - ');
+		let result = await node.rest.resolve(`ytmsearch:${query}`);
+		if (!result || !result.tracks.length) {
+			result = await node.rest.resolve(`ytsearch:${query}`);
+			if (!result || !result.tracks.length) return;
+		}
+		track.track = result.tracks[0].track;
+		return track;
 	}
 
 	/**
@@ -74,7 +82,7 @@ class FerraLink extends EventEmitter {
 		const regex = /^https?:\/\//;
 		if (regex.test(query)) {
 			if (this.spotify.check(query)) return await this.spotify.resolve(query);
-			return await this.getNode().rest.resolve(query);
+			return await this.shoukaku.getNode('auto')?.rest.resolve(query);
 		} else {
 			switch (options.engine) {
 				case 'spsearch': {
@@ -82,7 +90,7 @@ class FerraLink extends EventEmitter {
 				}
 				default: {
 					const source = options?.engine || 'ytsearch';
-					return await this.getNode().rest.resolve(`${source}:${query}`);
+					return await this.shoukaku.getNode('auto')?.rest.resolve(`${source}:${query}`);
 				}
 			}
 		}
