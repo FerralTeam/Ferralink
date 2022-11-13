@@ -186,31 +186,17 @@ class Player {
 	 * Play the queue
 	 * @returns {Promise<void>}
 	 */
-	async play() {
-		let current = this.queue.shift();
-		if (!current.track) current = await this.resolve(current);
-		this.queue.current = current;
-		const playerOptions = { noReplace: false };
-		this.shoukaku
-	            .setVolume(this.volume / 100)
-	            .playTrack({track: this.queue.current.track}, playerOptions);
-			
-	}
-
-	/**
-	 * Resolve a track
-	 * @param {shoukaku.Track} track
-	 * @returns {Promise<shoukaku.Track>}
-	 */
-	async resolve(track) {
-		const query = [track.info.author, track.info.title].filter(x => !!x).join(' - ');
-		let result = await this.shoukaku.node.rest.resolve(`ytmsearch:${query}`);
-		if (!result || !result.tracks.length) {
-			result = await this.shoukaku.node.rest.resolve(`ytsearch:${query}`);
-			if (!result || !result.tracks.length) return;
+	async play(options = { noReplace: false }) {
+		if (!this.queue.length) return;
+		this.queue.current = this.queue.shift();
+		try {
+			if (!this.queue.current.track) this.queue.current = await this.manager.resolve(this.queue.current, this.shoukaku.node);
+			this.shoukaku
+				.setVolume(this.volume / 100)
+				.playTrack({ track: this.queue.current.track }, options);
+		} catch (e) {
+			this.manager.emit('trackError', this, this.queue.current, e);
 		}
-		track.track = result.tracks[0].track;
-		return track;
 	}
 
 	/**
