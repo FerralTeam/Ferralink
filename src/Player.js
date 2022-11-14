@@ -205,7 +205,6 @@ class Player {
 	 */
 	disconnect() {
 		this.pause(true);
-		this.shoukaku.connection.disconnect();
 		this.voiceId = null;
 		this.queue.current = null;
 		this.queue.clear();
@@ -217,7 +216,7 @@ class Player {
 	 */
 	destroy() {
 		this.disconnect();
-		this.shoukaku.connection.destroyLavalinkPlayer();
+		this.shoukaku.connection.disconnect();
 		this.shoukaku.removeAllListeners();
 		this.manager.players.delete(this.guildId);
 		this.manager.emit('PlayerDestroy', this);
