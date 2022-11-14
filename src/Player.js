@@ -192,10 +192,10 @@ class Player {
 		try {
 			if (!this.queue.current.track) this.queue.current = await this.manager.resolve(this.queue.current, this.shoukaku.node);
 			this.shoukaku
-			    .setVolume(this.volume / 100)
-			    .playTrack({ track: this.queue.current.track }, options);
+				.setVolume(this.volume / 100)
+				.playTrack({ track: this.queue.current.track }, options);
 		} catch (e) {
-		        this.manager.emit('trackError', this, this.queue.current, e);
+			this.manager.emit('trackError', this, this.queue.current, e);
 		}
 	}
 
@@ -218,7 +218,7 @@ class Player {
 	destroy() {
 		this.disconnect();
 		this.shoukaku.connection.disconnect();
-                this.shoukaku.removeAllListeners();
+		this.shoukaku.removeAllListeners();
 		this.manager.players.delete(this.guildId);
 		this.manager.emit('PlayerDestroy', this);
 	}
