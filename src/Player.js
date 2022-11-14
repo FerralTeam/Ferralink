@@ -207,6 +207,7 @@ class Player {
 		this.pause(true);
 		this.voiceId = null;
 		this.queue.current = null;
+		this.queue.previous = null;
 		this.queue.clear();
 	}
 
