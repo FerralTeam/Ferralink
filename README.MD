@@ -34,7 +34,7 @@ A Simple but powerful Lavalink Client for your JavaScript Discord Bot!
 
 # How to Setup our FerraLink
 
-## 1. Set the Initilizer of Ferralink
+## Set the Initilizer of Ferralink
 
 *Creating in a way like the code example you can import the bot, nodes and shoukakuOptions.*
 
@@ -63,7 +63,7 @@ client.FerraLink = new FerraLink({
 }, new Connectors.DiscordJS(client), Nodes, ShoukakuOptions);
 ```
 
-## 2. A small example to create play command.
+## A small example to create play command.
 ```js
 const player = await client.FerraLink.createPlayer({
 guildId: message.guild.id,
