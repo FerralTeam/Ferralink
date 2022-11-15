@@ -60,7 +60,7 @@ restTimeout: 60000
 client.FerraLink = new FerraLink({
  clientID: "Your spotify clientId here",
  clientSecret: "Your spotify clientSecret here"
-}, new Shoukaku(new Connectors.DiscordJS(client), Nodes, ShoukakuOptions));
+}, new Connectors.DiscordJS(client), Nodes, ShoukakuOptions);
 ```
 
 ## 2. A small example to create play command.
