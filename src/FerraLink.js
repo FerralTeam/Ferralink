@@ -10,7 +10,7 @@ class FerraLink extends EventEmitter {
 	 * @param {import('shoukaku').NodeOption[]} nodes
 	 * @param {FerraLinkOptions} options
 	 */
-	constructor(connector, nodes, shoukakuoptions) {
+	constructor(options, connector, nodes, shoukakuoptions) {
 		super();
 
 		/** @type {Shoukaku} */
