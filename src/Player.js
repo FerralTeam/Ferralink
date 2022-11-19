@@ -11,6 +11,9 @@ class Player {
 	constructor(manager, options) {
 		/** @type {FerraLink} */
 		this.manager = manager;
+		
+		/** @type {FerraLink.client} */
+		this.client = options.client;
 
 		/** @type {string} */
 		this.guildId = options.guildId;
@@ -193,7 +196,7 @@ class Player {
 			if (!this.queue.current.track) this.queue.current = await this.manager.resolve(this.queue.current, this.shoukaku.node);
 			this.shoukaku
 				.setVolume(this.volume / 100)
-				.playTrack({ track: this.queue.current.track }, options);
+				.playTrack({ track: this.queue.current.track, options});
 		} catch (e) {
 			this.manager.emit('trackError', this, this.queue.current, e);
 		}
@@ -205,10 +208,19 @@ class Player {
 	 */
 	disconnect() {
 		this.pause(true);
+		const data = {
+			op: 4,
+			d: {
+				guild_id: this.guildId,
+				channel_id: null,
+				self_mute: false,
+				self_deaf: false,
+			},
+		};
+		const guild = this.client.guilds.cache.get(this.guildId);
+		if (guild) guild.shard.send(data);
 		this.voiceId = null;
-		this.queue.current = null;
-		this.queue.previous = null;
-		this.queue.clear();
+		return this;
 	}
 
 	/**
