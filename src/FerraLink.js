@@ -19,7 +19,6 @@ class FerraLink extends EventEmitter {
 		/** @type {Map<string, Player>} */
 		this.players = new Map();
 		
-		/** @type {Spotify} */
 		if (options) {
 		   /** @type {FerraLink.client} */
 	           this.client = options.BotClient;
