@@ -71,7 +71,7 @@ client.FerraLink = new FerraLink({
  BotClient: client,
  ClientID: "Your spotify clientId here",
  ClientSecret: "Your spotify clientSecret here"
-}, new Shoukaku(new Connectors.DiscordJS(client), Nodes, ShoukakuOptions));
+}, new Connectors.DiscordJS(client), Nodes, ShoukakuOptions);
 ```
 
 ## A small example to create play command.
