@@ -18,13 +18,10 @@ class FerraLink extends EventEmitter {
 
 		/** @type {Map<string, Player>} */
 		this.players = new Map();
-
+		
+		/** @type {Spotify} */
 		if (options) {
-			/** @type {FerraLink.client} */
-			this.client = options.BotClient;
-
-			/** @type {Spotify} */
-			this.spotify = new Spotify(options);
+		   this.spotify = new Spotify(options);
 		}
 	}
 
@@ -47,7 +44,6 @@ class FerraLink extends EventEmitter {
 			deaf: options.deaf || true
 		});
 		const FerraLinkPlayer = new Player(this, {
-			client: this.client,
 			guildId: options.guildId,
 			voiceId: options.voiceId,
 			textId: options.textId,
