@@ -39,8 +39,18 @@ A Simple but powerful Lavalink Client for your JavaScript Discord Bot!
 *Creating in a way like the code example you can import the bot, nodes and shoukakuOptions.*
 
 ```js
+const { Client, GatewayIntentBits } = require("discord.js");
 const { FerraLink } = require("ferra-link");
-const { Connectors } = require("shoukaku");
+const { Shoukaku, Connectors } = require('shoukaku');
+
+const client = new Client({
+intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildVoiceStates,
+    GatewayIntentBits.MessageContent
+  ],
+});
 
 const Nodes = [{
 name: "Lavalink",
@@ -58,9 +68,10 @@ restTimeout: 60000
 };
 
 client.FerraLink = new FerraLink({
+ DiscordClient: client,
  clientID: "Your spotify clientId here",
  clientSecret: "Your spotify clientSecret here"
-}, new Connectors.DiscordJS(client), Nodes, ShoukakuOptions);
+}, new Shoukaku(new Connectors.DiscordJS(client), Nodes, ShoukakuOptions));
 ```
 
 ## A small example to create play command.
