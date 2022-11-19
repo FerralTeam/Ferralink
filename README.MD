@@ -68,7 +68,6 @@ restTimeout: 60000
 };
 
 client.FerraLink = new FerraLink({
- BotClient: client,
  ClientID: "Your spotify clientId here",
  ClientSecret: "Your spotify clientSecret here"
 }, new Shoukaku(new Connectors.DiscordJS(client), Nodes, ShoukakuOptions));
