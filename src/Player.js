@@ -12,9 +12,6 @@ class Player {
 		/** @type {FerraLink} */
 		this.manager = manager;
 		
-		/** @type {FerraLink.client} */
-		this.client = options.client;
-
 		/** @type {string} */
 		this.guildId = options.guildId;
 
@@ -208,18 +205,10 @@ class Player {
 	 */
 	disconnect() {
 		this.pause(true);
-		const data = {
-			op: 4,
-			d: {
-				guild_id: this.guildId,
-				channel_id: null,
-				self_mute: false,
-				self_deaf: false,
-			},
-		};
-		const guild = this.client.guilds.cache.get(this.guildId);
-		if (guild) guild.shard.send(data);
 		this.voiceId = null;
+		this.queue.length = 0;
+	        this.queue.current = null;
+		this.queue.previous = null;
 		return this;
 	}
 
