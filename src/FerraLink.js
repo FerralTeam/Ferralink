@@ -21,7 +21,7 @@ class FerraLink extends EventEmitter {
 
 		if (options) {
 			/** @type {FerraLink.client} */
-			this.client = options.DiscordClient;
+			this.client = options.BotClient;
 
 			/** @type {Spotify} */
 			this.spotify = new Spotify(options);
