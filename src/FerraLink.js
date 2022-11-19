@@ -47,6 +47,7 @@ class FerraLink extends EventEmitter {
 			deaf: options.deaf || true
 		});
 		const FerraLinkPlayer = new Player(this, {
+			client: this.client,
 			guildId: options.guildId,
 			voiceId: options.voiceId,
 			textId: options.textId,
