@@ -41,7 +41,7 @@ A Simple but powerful Lavalink Client for your JavaScript Discord Bot!
 ```js
 const { Client, GatewayIntentBits } = require("discord.js");
 const { FerraLink } = require("ferra-link");
-const { Shoukaku, Connectors } = require('shoukaku');
+const { Connectors } = require('shoukaku');
 
 const client = new Client({
 intents: [
