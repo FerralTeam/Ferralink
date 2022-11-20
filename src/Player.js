@@ -196,7 +196,7 @@ class Player {
 			if (!this.queue.current.track) this.queue.current = await this.manager.resolve(this.queue.current, this.shoukaku.node);
 			this.shoukaku
 				.setVolume(this.volume / 100)
-				.playTrack({ track: this.queue.current.track, options});
+				.playTrack({ track: this.queue.current.track, options });
 		} catch (e) {
 			this.manager.emit('trackError', this, this.queue.current, e);
 		}
