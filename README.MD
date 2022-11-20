@@ -94,11 +94,11 @@ if (loadType === "PLAYLIST_LOADED") {
 for (const track of tracks) {
 player.queue.add(track);
 }
-if (!player.queue.current && !player.paused) await player.play();
+if (!player.playing && !player.paused) await player.play();
 message.channel.send({content: `Added ${player.queue.length} tracks from ${playlistInfo.name}`});
 } else if (loadType === "SEARCH_RESULT" || loadType === "TRACK_LOADED") {
 player.queue.add(tracks[0]);
-if (!player.queue.current && !player.paused) await player.play();
+if (!player.playing && !player.paused) await player.play();
 message.channel.send({content: `Queued ${tracks[0].info.title}`});
 } else return;
 ```
