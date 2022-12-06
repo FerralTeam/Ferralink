@@ -44,45 +44,45 @@ const { FerraLink } = require("ferra-link");
 const { Connectors } = require("shoukaku");
 
 const client = new Client({
-intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.GuildVoiceStates,
-    GatewayIntentBits.MessageContent
-  ],
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildVoiceStates,
+        GatewayIntentBits.MessageContent
+    ],
 });
 
 const Nodes = [{
-name: "Lavalink",
-url: "localhost:2333",
-auth: "youshallpass",
-secure: false
+    name: "Lavalink",
+    url: "localhost:2333",
+    auth: "youshallpass",
+    secure: false
 }];
 
 const ShoukakuOptions = {
-moveOnDisconnect: false, 
-resumable: false, 
-resumableTimeout: 60, 
-reconnectTries: 10, 
-restTimeout: 60000
+    moveOnDisconnect: false,
+    resumable: false,
+    resumableTimeout: 60,
+    reconnectTries: 10,
+    restTimeout: 60000
 };
 
 client.FerraLink = new FerraLink({
- BotClient: client,
- ClientID: "Your spotify clientId here",
- ClientSecret: "Your spotify clientSecret here"
+    BotClient: client,
+    ClientID: "Your spotify clientId here",
+    ClientSecret: "Your spotify clientSecret here"
 }, new Connectors.DiscordJS(client), Nodes, ShoukakuOptions);
 ```
 
 ## A small example to create play command.
 ```js
 const player = await client.FerraLink.createPlayer({
-guildId: message.guild.id,
-voiceId: message.member.voice.channel.id,
-textId: message.channel.id,
-shardId: message.guild.shardId,
-volume: 100,
-deaf: true,
+    guildId: message.guild.id,
+    voiceId: message.member.voice.channel.id,
+    textId: message.channel.id,
+    shardId: message.guild.shardId,
+    volume: 100,
+    deaf: true,
 });
 
 const resolve = await player.search(args.join(" "), { engine: "spsearch" }); // spsearch is work for search spotify tracks.
@@ -91,15 +91,15 @@ const { loadType, tracks, playlistInfo } = resolve;
 if (loadType === "NO_MATCHES" || !tracks.length) return;
 
 if (loadType === "PLAYLIST_LOADED") {
-for (const track of tracks) {
-player.queue.add(track);
-}
-if (!player.playing && !player.paused) await player.play();
-message.channel.send({content: `Added ${player.queue.length} tracks from ${playlistInfo.name}`});
+    for (const track of tracks) {
+        player.queue.add(track);
+    }
+    if (!player.playing && !player.paused) await player.play();
+    message.channel.send({ content: `Added ${player.queue.length} tracks from ${playlistInfo.name}` });
 } else if (loadType === "SEARCH_RESULT" || loadType === "TRACK_LOADED") {
-player.queue.add(tracks[0]);
-if (!player.playing && !player.paused) await player.play();
-message.channel.send({content: `Queued ${tracks[0].info.title}`});
+    player.queue.add(tracks[0]);
+    if (!player.playing && !player.paused) await player.play();
+    message.channel.send({ content: `Queued ${tracks[0].info.title}` });
 } else return;
 ```
 
