@@ -324,7 +324,8 @@ class Spotify {
 				position: 0,
 				sourceName: 'spotify',
 				title: track.name,
-				uri: `https://open.spotify.com/track/${track.id}`
+				uri: `https://open.spotify.com/track/${track.id}`,
+				thumbnail: track.album?.images[0]?.url,
 			}
 		});
 	}
